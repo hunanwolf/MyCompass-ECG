@@ -49,7 +49,6 @@ public class BinDingActivity extends BarBaseActivity {
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override

@@ -64,11 +64,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="15dp"
-
                 android:layout_marginTop="5dp"
                 android:ellipsize="end"
                 android:lines="2"
-                android:text="问就看烦了观看了国内看来咖喱块干冷干康乐抗拉看过那么阿奎拉尼咖喱块呢"
+                android:text="问就看烦了观看了国内看来咖喱块干冷干康乐抗拉看过那么阿奎拉尼咖喱块呢【实时诊断】"
                 android:textColor="@color/gwe"
                 android:textSize="16sp" />
 
@@ -79,7 +78,7 @@
 
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="15dp"
-
+android:visibility="gone"
                 android:layout_marginTop="10dp"
                 android:ellipsize="end"
                 android:text="【实时诊断】"

@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.compassecg.test720.compassecg.R;
 
+import static android.widget.ListPopupWindow.WRAP_CONTENT;
+
 /**
  * Created by anim on 2016/8/10.
  */
@@ -49,10 +51,18 @@ public class message_list_adapterW extends BaseAdapter {
             convertView = View.inflate(mContext, R.layout.item_message, null);
             indicator.nameTv = (TextView) convertView.findViewById(R.id.nameTv);
             indicator.img = (ImageView) convertView.findViewById(R.id.img);
-            indicator.unread_msg_number= (TextView) convertView.findViewById(R.id.unread_msg_number);
+            indicator.unread_msg_number = (TextView) convertView.findViewById(R.id.unread_msg_number);
             convertView.setTag(indicator);
         } else {
             indicator = (Indicator) convertView.getTag();
+        }
+        if (position == 0) {
+            indicator.unread_msg_number.setText("7");
+            indicator.unread_msg_number.setWidth(WRAP_CONTENT);
+            indicator.unread_msg_number.setWidth(WRAP_CONTENT);
+        } else {
+            indicator.unread_msg_number.setWidth(10);
+            indicator.unread_msg_number.setWidth(10);
         }
         indicator.nameTv.setText(urls[position]);
         indicator.img.setImageResource(list[position]);

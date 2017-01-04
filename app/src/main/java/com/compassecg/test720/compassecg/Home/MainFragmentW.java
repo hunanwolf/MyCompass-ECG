@@ -124,14 +124,6 @@ public class MainFragmentW extends BaseFragment implements forum_list_adapterW.C
         list.add("梁帅");
         list.add("候豪邦");
         list.add("张科");
-        list.add("2");
-        list.add("吴一东");
-        list.add("彭杰");
-        list.add("梁帅");
-        list.add("候豪邦");
-        list.add("张科");
-        list.add("2");
-
         list1.add("http://img3.duitang.com/uploads/item/201609/15/20160915184656_TrwKP.thumb.700_0.jpeg");
         list1.add("http://image.tianjimedia.com/uploadImages/upload/20141119/330bwkzdvkjjpg.jpg");
         list1.add("http://v1.qzone.cc/avatar/201408/17/14/22/53f04a277d3dd110.jpg%21200x200.jpg");
@@ -355,7 +347,7 @@ public class MainFragmentW extends BaseFragment implements forum_list_adapterW.C
 
             case R.id.zuanjia://推荐专家
 
-                MainActivity.test_a.switchPage(4);
+
                 startActivity(new Intent(getActivity(), DoctorActivity.class));
                 break;
 

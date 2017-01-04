@@ -5,12 +5,12 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.compassecg.test720.compassecg.R;
+import com.compassecg.test720.compassecg.View.CircleImageView;
 import com.compassecg.test720.compassecg.unitl.Connector;
 
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 public class ApplicationAndNoticeadapterW extends BaseAdapter {
     private Context mContext;
     private Activity activity;
-   List<String >urls;
+    List<String> urls;
     private Callback mCallback;
 
     public interface Callback {
@@ -31,7 +31,7 @@ public class ApplicationAndNoticeadapterW extends BaseAdapter {
         public void follclick(View v);
     }
 
-    public ApplicationAndNoticeadapterW(Context mContext, List<String > urls, Activity activity, Callback callback) {
+    public ApplicationAndNoticeadapterW(Context mContext, List<String> urls, Activity activity, Callback callback) {
         this.mContext = mContext;
         this.urls = urls;
         this.activity = activity;
@@ -55,11 +55,11 @@ public class ApplicationAndNoticeadapterW extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-     final    Indicator indicator;
+        final Indicator indicator;
         if (convertView == null) {
             indicator = new Indicator();
             convertView = View.inflate(mContext, R.layout.item_fans_list, null);
-            indicator.lm_img = (ImageView) convertView.findViewById(R.id.lm_img);
+            indicator.lm_img = (CircleImageView) convertView.findViewById(R.id.lm_img);
             indicator.iv_name = (TextView) convertView.findViewById(R.id.iv_name);
             indicator.lv_position = (TextView) convertView.findViewById(R.id.lv_position);
             indicator.click = (LinearLayout) convertView.findViewById(R.id.click);
@@ -79,6 +79,7 @@ public class ApplicationAndNoticeadapterW extends BaseAdapter {
         }
         indicator.follow.setText("同意");
         indicator.Invitation.setText("拒绝");
+        indicator.Invitation.setTextColor(mContext.getResources().getColor(R.color.gwe));
         indicator.Invitation.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.drawoblelll));
         indicator.follow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +100,7 @@ public class ApplicationAndNoticeadapterW extends BaseAdapter {
     }
 
     private static class Indicator {
-        ImageView lm_img;
+        CircleImageView lm_img;
         TextView iv_name;
         TextView lv_position;
         TextView follow;

@@ -11,7 +11,7 @@
 
 
         <!--android:background="@drawable/ic_placeholder"-->
-        <ImageView
+        <com.compassecg.test720.compassecg.View.CircleImageView
             android:id="@+id/lm_img"
             android:layout_width="85dp"
             android:layout_height="85dp"
@@ -100,7 +100,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/drawoblelv"
+                android:background="@drawable/drawoblelvl"
                 android:gravity="center"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
