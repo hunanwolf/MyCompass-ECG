@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:ngv="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context="com.compassecg.test720.compassecg.GroupConsultation.activity.ConsultationDetailsActivityH">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -43,6 +44,7 @@
         android:layout_marginBottom="61dp"
         android:layout_below="@+id/rl_top">
         <LinearLayout
+            android:id="@+id/ll1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">

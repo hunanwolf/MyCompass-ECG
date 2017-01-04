@@ -68,8 +68,10 @@
     <color name="lightGray">#F8F8F8</color>
     <color name="middleGray">#F1F1F1</color>
     <color name="lvse">#3dcc7a</color>
+    <color name="blue_text">#7f8daf</color>
+    <color name="line">#FFF9F8F8</color>
     <!--<color name="line">#E2E2E2</color>-->
-    <color name="line">#F0F0F0</color>
+    <!--<color name="line">#F0F0F0</color>-->
 
     <color name="booton_moren_text_color">#AAAAAA</color>
     <color name="normal">#FBFBFB</color>

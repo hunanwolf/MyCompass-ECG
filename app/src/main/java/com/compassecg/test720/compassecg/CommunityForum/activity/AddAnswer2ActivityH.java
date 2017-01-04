@@ -101,14 +101,12 @@ public class AddAnswer2ActivityH extends NoBarBaseActivity {
                 switch (state) {
                     case KeyboardListenRelativeLayout.KEYBOARD_STATE_HIDE://软键盘隐藏
                         Log.i("WOLF","软键盘隐藏");
-                        Logger.d("软键盘隐藏");
                         //更改图标
                         iv_jianpan.setImageResource(R.mipmap.answer_btn_jianpan);
                         //controlKeyboardLayout(root);
                         break;
                     case KeyboardListenRelativeLayout.KEYBOARD_STATE_SHOW://软键盘显示
                         Log.i("WOLF","软键盘显示");
-                        Logger.d("软键盘显示");
                         //更改图标
                         iv_jianpan.setImageResource(R.mipmap.answer_btn_jianpan_pre);
                         break;

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.compassecg.test720.compassecg.GroupConsultation.activity.CreateGroupActivityH">
     <RelativeLayout
         android:id="@+id/rl_top"
@@ -73,7 +74,7 @@
             android:layout_marginLeft="80dp"
             android:textSize="17sp"
             android:maxLength="15"
-            android:background="@color/normal"/>
+            android:background="@color/white"/>
 
     </RelativeLayout>
     <View
@@ -97,7 +98,7 @@
             android:layout_height="match_parent"
             android:hint="填写组简介（限30字）"
             android:gravity="top"
-            android:background="@color/normal"
+            android:background="@color/white"
             android:padding="10dp"
             android:maxLength="30"
             android:textSize="17sp"/>

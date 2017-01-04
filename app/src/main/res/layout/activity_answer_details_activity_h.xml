@@ -7,7 +7,12 @@
     android:background="@color/line"
     android:id="@+id/root"
     tools:context="com.compassecg.test720.compassecg.GroupConsultation.activity.ConsultationDetailsActivityH">
-
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <RelativeLayout
         android:id="@+id/rl_top"
         android:layout_width="match_parent"
@@ -20,7 +25,15 @@
             android:layout_centerInParent="true"
             android:textStyle="bold"
             android:textSize="20dp"/>
-
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/nav_more"/>
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="60dp"
@@ -37,9 +50,11 @@
         android:background="@color/white"
         >
         <LinearLayout
+            android:id="@+id/ll2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/white">
             <View
                 android:id="@+id/v_top"
                 android:layout_width="match_parent"
@@ -48,7 +63,8 @@
                 android:layout_below="@+id/rl_top"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:background="@color/white">
         <com.compassecg.test720.compassecg.View.RoundImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -75,7 +91,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="25dp">
+            android:layout_marginBottom="25dp"
+            android:background="@color/white">
 
         <TextView
             android:layout_width="wrap_content"
@@ -101,6 +118,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:background="@color/white"
                 ngv:gap="2dp">
             </com.compassecg.test720.compassecg.View.NineGridView>
         </LinearLayout>
@@ -113,16 +131,18 @@
     <com.compassecg.test720.compassecg.View.MyListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
     </com.compassecg.test720.compassecg.View.MyListView>
     </LinearLayout>
     </com.compassecg.test720.compassecg.View.BottomScrollView>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_above="@+id/ll_bottom"
+        android:layout_above="@+id/fl1"
         android:background="@color/line"/>
     <FrameLayout
+        android:id="@+id/fl1"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true">
@@ -226,5 +246,29 @@
                 android:layout_marginBottom="7dp"/>
 
         </RelativeLayout>
+    </FrameLayout>
+    </RelativeLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <RelativeLayout
+                android:id="@+id/rl1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tv_delete"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@mipmap/pic_kuang"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="10dp"
+                    android:text="删除"
+                    android:gravity="center"
+                    android:textSize="18dp"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+        </FrameLayout>
     </FrameLayout>
 </com.compassecg.test720.compassecg.View.KeyboardListenRelativeLayout>

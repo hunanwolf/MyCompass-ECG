@@ -13,10 +13,6 @@ import android.widget.RelativeLayout;
 
 import com.compassecg.test720.compassecg.CommunityForum.activity.PostDetailsActivityH;
 import com.compassecg.test720.compassecg.CommunityForum.adapter.CommunityAdapterH;
-import com.compassecg.test720.compassecg.GroupConsultation.activity.CreateGroupActivityH;
-import com.compassecg.test720.compassecg.GroupConsultation.activity.GroupActivityH;
-import com.compassecg.test720.compassecg.GroupConsultation.activity.SerachActivityH;
-import com.compassecg.test720.compassecg.GroupConsultation.adapter.GroupAdapterH;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.View.MyListView;
 import com.test720.auxiliary.Utils.BaseFragment;

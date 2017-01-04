@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
@@ -23,6 +24,7 @@ import com.compassecg.test720.compassecg.View.NetworkImageAdapter;
 import com.compassecg.test720.compassecg.View.NineGridView;
 import com.orhanobut.logger.Logger;
 import com.test720.auxiliary.Utils.NoBarBaseActivity;
+import com.test720.auxiliary.Utils.T;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -40,6 +42,11 @@ public class AnswerDetailsActivityH extends NoBarBaseActivity {
     private EditText et_content;
     private RelativeLayout rl_message;
     private LinearLayout ll_bottom;
+    private ImageView iv_more;
+    private RelativeLayout rl1;
+    private TextView tv_delete;
+    private RelativeLayout rl_top;
+    private LinearLayout ll2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +61,45 @@ public class AnswerDetailsActivityH extends NoBarBaseActivity {
         iv_back.setOnClickListener(this);
         rl_left.setOnClickListener(this);
         rl_right.setOnClickListener(this);
+        iv_more.setOnClickListener(this);
+        tv_delete.setOnClickListener(this);
+        rl_top.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
+                return false;
+            }
+        });
+        ll2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
+                return false;
+            }
+        });
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
+                return false;
+            }
+        });
+        ll_bottom.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
+                return false;
+            }
+        });
+
         root.setOnKeyboardStateChangedListener(new KeyboardListenRelativeLayout.IOnKeyboardStateChangedListener() {
             @Override
             public void onKeyboardStateChanged(int state) {
@@ -76,6 +122,7 @@ public class AnswerDetailsActivityH extends NoBarBaseActivity {
                 }
             }
         });
+
     }
 
     private void setAdapter() {
@@ -108,6 +155,11 @@ public class AnswerDetailsActivityH extends NoBarBaseActivity {
         et_content=getView(R.id.et_content);
         rl_message=getView(R.id.rl_message);
         ll_bottom=getView(R.id.ll_bottom);
+        iv_more=getView(R.id.iv_more);
+        rl1=getView(R.id.rl1);
+        tv_delete=getView(R.id.tv_delete);
+        rl_top=getView(R.id.rl_top);
+        ll2=getView(R.id.ll2);
     }
     public class Nicgriadview implements NineGridView.OnImageClickListener {
 
@@ -139,6 +191,19 @@ public class AnswerDetailsActivityH extends NoBarBaseActivity {
                 popInput();
                 rl_message.setVisibility(View.VISIBLE);
                 ll_bottom.setVisibility(View.GONE);
+                break;
+            case R.id.iv_more:
+                if(tv_delete.getVisibility()==View.GONE){
+                    tv_delete.setVisibility(View.VISIBLE);
+                }else {
+                    tv_delete.setVisibility(View.GONE);
+                }
+                break;
+            case R.id.tv_delete:
+                T.showShort(AnswerDetailsActivityH.this,"点击了删除");
+                Intent intent1=new Intent(AnswerDetailsActivityH.this,ReportActivityH.class);
+                startActivity(intent1);
+                tv_delete.setVisibility(View.GONE);
                 break;
         }
     }

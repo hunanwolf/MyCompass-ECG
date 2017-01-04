@@ -113,6 +113,38 @@
                     android:layout_centerVertical="true"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/id6"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="5dp"
+                    android:text="小组"
+                    android:textSize="16sp"
+                    android:textColor="@color/gwe"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/id7"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="5dp"
+                    android:text="帖子"
+                    android:textSize="16sp"
+                    android:textColor="@color/gwe"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
 
 
 

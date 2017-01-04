@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.compassecg.test720.compassecg.GroupConsultation.activity.ReportActivityH">
     <RelativeLayout
         android:id="@+id/rl_top"

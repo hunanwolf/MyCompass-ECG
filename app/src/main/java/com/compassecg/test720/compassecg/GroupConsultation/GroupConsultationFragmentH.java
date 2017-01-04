@@ -13,11 +13,14 @@ import android.widget.RelativeLayout;
 
 import com.compassecg.test720.compassecg.GroupConsultation.activity.CreateGroupActivityH;
 import com.compassecg.test720.compassecg.GroupConsultation.activity.GroupActivityH;
-import com.compassecg.test720.compassecg.GroupConsultation.activity.SerachActivityH;
 import com.compassecg.test720.compassecg.GroupConsultation.adapter.GroupAdapterH;
+import com.compassecg.test720.compassecg.Home.seach.search_activity;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.View.MyListView;
 import com.test720.auxiliary.Utils.BaseFragment;
+
+import static com.compassecg.test720.compassecg.Home.seach.search_activity.ALNGKALG;
+
 /**
  * Created by hp on 2016/12/6.
  */
@@ -32,6 +35,7 @@ public class GroupConsultationFragmentH extends BaseFragment {
     private RelativeLayout rl_city;
     private ImageView iv_create;
     private ImageView iv_search;
+    public static final int XIAOZU = 1029;//小组
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -99,8 +103,7 @@ public class GroupConsultationFragmentH extends BaseFragment {
                 startActivity(intent3);
                 break;
             case R.id.iv_search:
-                Intent intent4=new Intent(getActivity(), SerachActivityH.class);
-                startActivity(intent4);
+                startActivity(new Intent(getActivity(),search_activity.class).putExtra("type",XIAOZU));
                 break;
         }
     }

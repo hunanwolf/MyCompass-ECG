@@ -6,7 +6,8 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
        <com.compassecg.test720.compassecg.View.RoundImageView
            android:id="@+id/iv1"
            android:layout_width="35dp"
@@ -19,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="周杰伦"
+            android:textColor="@color/blue_text"
             android:layout_marginLeft="55dp"
             android:layout_marginTop="10dp"/>
         <TextView

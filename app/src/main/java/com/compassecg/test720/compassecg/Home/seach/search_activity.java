@@ -41,6 +41,8 @@ public class search_activity extends NoBarBaseActivity {
     public static final int JMLKMLLLKL = 1026;//课件
     public static final int KAJNGANGIOAN = 1027;//杂志
     public static final int JNLAKNGANGALKM = 1028;//医生
+    public static final int XIAOZU = 1029;//小组
+    public static final int LUNTANG = 1030;//论坛
 
     GridView lg_gridview;
     PopupWindow PopupWindow;//
@@ -70,12 +72,14 @@ public class search_activity extends NoBarBaseActivity {
     TextView lt_history;
     ImageView tu;
     RelativeLayout lv_Searchhistory;
+    private LinearLayout seshahj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_activity);
         lv_Searchhistory = getView(R.id.lv_Searchhistory);
+        seshahj = getView(R.id.seshahj);
         leibie = getView(R.id.leibie);
         switch (getIntent().getExtras().getInt("type")) {
             case ALNGKALG:
@@ -103,6 +107,17 @@ public class search_activity extends NoBarBaseActivity {
                 type = 5;
                 leibie.setText("课件");
                 break;
+            case XIAOZU:
+                type = 6;
+                leibie.setText("小组");
+                lv_Searchhistory.setVisibility(View.GONE);
+                break;
+            case LUNTANG:
+                type = 7;
+                leibie.setText("论坛");
+                seshahj.setVisibility(View.GONE);
+                lv_Searchhistory.setVisibility(View.GONE);
+                break;
         }
         initview();
         gethistoy();
@@ -118,6 +133,7 @@ public class search_activity extends NoBarBaseActivity {
         layout = getView(R.id.layout);
         getView(R.id.back).setOnClickListener(this);
         list = (ListView) findViewById(R.id.lsitview);
+        //seshahj = (LinearLayout) findViewById(R.id.seshahj);
 
         listll = getView(R.id.listll);
         adapter1 = new searchhistory_adapter(mContext, listsearch);
@@ -204,6 +220,14 @@ public class search_activity extends NoBarBaseActivity {
                     type = 5;
                     thispage = 1;
                     leibie.setText("课件");
+                }  else if (listsearch.get(position).getId().equals("6")) {
+                    type = 6;
+                    thispage = 1;
+                    leibie.setText("小组");
+                }  else if (listsearch.get(position).getId().equals("7")) {
+                    type = 7;
+                    thispage = 1;
+                    leibie.setText("帖子");
                 } else {
 
                 }
@@ -336,21 +360,28 @@ public class search_activity extends NoBarBaseActivity {
         RelativeLayout btn2 = (RelativeLayout) view.findViewById(R.id.id3);
         RelativeLayout btn3 = (RelativeLayout) view.findViewById(R.id.id4);
         RelativeLayout btn4 = (RelativeLayout) view.findViewById(R.id.id5);
+        RelativeLayout btn5 = (RelativeLayout) view.findViewById(R.id.id6);
+        RelativeLayout btn6 = (RelativeLayout) view.findViewById(R.id.id7);
 
         switch (getIntent().getExtras().getInt("type")) {
             case ALNGKALG:
-
+                btn5.setVisibility(View.GONE);
+                btn6.setVisibility(View.GONE);
                 break;
             case LKANGALGNA:
 
                 btn.setVisibility(View.GONE);
                 btn1.setVisibility(View.GONE);
+                btn5.setVisibility(View.GONE);
+                btn6.setVisibility(View.GONE);
                 break;
             case JMLKMLLLKL:
                 btn.setVisibility(View.GONE);
                 btn1.setVisibility(View.GONE);
                 btn2.setVisibility(View.GONE);
                 btn3.setVisibility(View.GONE);
+                btn5.setVisibility(View.GONE);
+                btn6.setVisibility(View.GONE);
 
                 break;
             case KAJNGANGIOAN:
@@ -358,12 +389,24 @@ public class search_activity extends NoBarBaseActivity {
                 btn1.setVisibility(View.GONE);
                 btn2.setVisibility(View.GONE);
                 btn4.setVisibility(View.GONE);
+                btn5.setVisibility(View.GONE);
+                btn6.setVisibility(View.GONE);
                 break;
             case JNLAKNGANGALKM:
                 btn.setVisibility(View.GONE);
                 btn1.setVisibility(View.GONE);
                 btn3.setVisibility(View.GONE);
                 btn4.setVisibility(View.GONE);
+                btn5.setVisibility(View.GONE);
+                btn6.setVisibility(View.GONE);
+                break;
+            case XIAOZU:
+                btn.setVisibility(View.GONE);
+                btn1.setVisibility(View.GONE);
+                btn2.setVisibility(View.GONE);
+                btn3.setVisibility(View.GONE);
+                btn4.setVisibility(View.GONE);
+
                 break;
 
         }
