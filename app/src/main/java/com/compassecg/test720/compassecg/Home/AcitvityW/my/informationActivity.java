@@ -22,11 +22,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
+import com.compassecg.test720.compassecg.APP;
+import com.compassecg.test720.compassecg.LoginActivity.cahnggeActivity;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.View.CircleImageView;
 import com.compassecg.test720.compassecg.unitl.BarBaseActivity;
+import com.compassecg.test720.compassecg.unitl.Connector;
 import com.compassecg.test720.compassecg.unitl.LocalImageHelper;
+import com.loopj.android.http.RequestParams;
 import com.test720.auxiliary.Utils.L;
 
 import java.io.ByteArrayInputStream;
@@ -46,6 +52,10 @@ public class informationActivity extends BarBaseActivity {
     private String imageName;
     private File imageFile;
     private Intent intent;
+    private static final int SATATl = 1;
+    TextView renz_tv;
+    private static final int SATAT = 2;
+    private ByteArrayInputStream is;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +80,64 @@ public class informationActivity extends BarBaseActivity {
         Hospital_tv = getView(R.id.Hospital_tv);
         skill_tv = getView(R.id.skill_tv);
         intro_tv = getView(R.id.intro_tv);
+        renz_tv = getView(R.id.renz_tv);
+
+        if ("".equals(getIntent().getExtras().getString("index"))) {
+            getDate();
+        } else {
+            JSONObject object = JSON.parseObject(getIntent().getExtras().getString("index"));
+
+
+            if ("".equals(object.getString("nickname"))) {
+                tv_name.setText("暂未完善");
+            } else {
+                tv_name.setText(object.getString("nickname"));
+            }
+
+
+            if (object.getIntValue("status") == 1) {
+                renz_tv.setText("·已认证");
+            } else {
+                renz_tv.setText("·未认证");
+            }
+
+
+            if ("".equals(object.getString("tel"))) {
+                phone_tv.setText("暂未完善");
+            } else {
+                phone_tv.setText(object.getString("tel"));
+            }
+
+
+            if ("".equals(object.getString("job"))) {
+                gender_tv.setText("暂未完善");
+            } else {
+                gender_tv.setText(object.getString("job"));
+            }
+
+            if ("".equals(object.getString("hospital"))) {
+                Hospital_tv.setText("暂未完善");
+            } else {
+                Hospital_tv.setText(object.getString("hospital"));
+            }
+
+            if ("".equals(object.getString("desk"))) {
+                skill_tv.setText("暂未完善");
+            } else {
+                skill_tv.setText(object.getString("desk"));
+            }
+            Glide.with(mContext)
+                    .load(Connector.lll + object.getString("pic"))
+                    .placeholder(R.drawable.index_head)
+                    .centerCrop()
+                    .into(header_iv);
+        }
+    }
+
+    public void getDate() {
+        RequestParams params = new RequestParams();
+        params.put("uid", APP.uuid);
+        Post(Connector.Personindex, params, SATATl);
     }
 
     @Override
@@ -86,7 +154,9 @@ public class informationActivity extends BarBaseActivity {
 
                 break;
             case R.id.phone://手机号
-                changgeedit("手机号", 2);
+                if (!"".equals(phone_tv.getText().toString())) {
+                    startActivity(new Intent(this, cahnggeActivity.class).putExtra("tel", phone_tv.getText().toString()));
+                }
 
                 break;
             case R.id.gender://职称
@@ -106,8 +176,9 @@ public class informationActivity extends BarBaseActivity {
                 startActivity(new Intent(this, profileActivityW.class));
                 break;
             case R.id.renzheng://认证状态
-
-                startActivity(new Intent(this, AuthenticationActivityW.class));
+                if (renz_tv.getText().toString().equals("·未认证")) {
+                    startActivity(new Intent(this, AuthenticationActivityW.class));
+                }
                 break;
             case R.id.pass_change://修改密码
                 startActivity(new Intent(this, PassChangeActivityW.class));
@@ -145,9 +216,14 @@ public class informationActivity extends BarBaseActivity {
 //                startActivity(new Intent(informationActivity.this, LoginActivity.class));
                 String changage = edittext.getText().toString();
                 L.e("changage", changage);
+
+                RequestParams params = new RequestParams();
+                params.put("uid", APP.uuid);
+
                 switch (i) {
                     case 1:
                         tv_name.setText(changage);
+                        params.put("nickname", changage);
                         break;
                     case 2:
                         phone_tv.setText(changage);
@@ -156,16 +232,20 @@ public class informationActivity extends BarBaseActivity {
 
                     case 3:
                         gender_tv.setText(changage);
+                        params.put("job", changage);
                         break;
 
                     case 4:
                         Hospital_tv.setText(changage);
+                        params.put("hospital", changage);
                         break;
 
                     case 5:
                         skill_tv.setText(changage);
+                        params.put("desk", changage);
                         break;
                 }
+                Post(Connector.editInfo, params, SATAT);
                 dialog.dismiss();
 
             }
@@ -338,19 +418,17 @@ public class informationActivity extends BarBaseActivity {
                             .centerCrop()
                             .into(header_iv);
 
-//                    is = compressImage(bitmap);
-//                    RequestParams params = new RequestParams();
-//                    params.put("id", APP.uuid);
-//                    params.put("type", "1");
-//                    params.put("file", is, "tem.png", "image/png");
-//                    Post(Connector.modifys, params, KJKAF);
+                    is = compressImage(bitmap);
+                    RequestParams params = new RequestParams();
+                    params.put("uid", APP.uuid);
+                    params.put("file", is, "tem.png", "image/png");
+                    Post(Connector.editInfo, params, SATAT);
 
                 }
                 break;
         }
     }
 
-    //
     private ByteArrayInputStream compressImage(Bitmap image) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 60, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
@@ -366,4 +444,75 @@ public class informationActivity extends BarBaseActivity {
         return isBm;
     }
 
+    @Override
+    public void Getsuccess(JSONObject jsonObject, int what) {
+        super.Getsuccess(jsonObject, what);
+        switch (what) {
+            case SATATl:
+                if (jsonObject.getIntValue("code") == 1) {
+                    JSONObject object = jsonObject.getJSONObject("list");
+
+
+                    if ("".equals(object.getString("nickname"))) {
+                        tv_name.setText("暂未完善");
+                    } else {
+                        tv_name.setText(object.getString("nickname"));
+                    }
+
+
+                    if (object.getIntValue("status") == 1) {
+                        renz_tv.setText("·已认证");
+                    } else if (object.getIntValue("status") == 2) {
+                        renz_tv.setText("·未认证");
+                    } else {
+                        renz_tv.setText("·认证中");
+                    }
+
+
+                    if ("".equals(object.getString("tel"))) {
+                        phone_tv.setText("暂未完善");
+                    } else {
+                        phone_tv.setText(object.getString("tel"));
+                    }
+
+
+                    if ("".equals(object.getString("job"))) {
+                        gender_tv.setText("暂未完善");
+                    } else {
+                        gender_tv.setText(object.getString("job"));
+                    }
+
+                    if ("".equals(object.getString("hospital"))) {
+                        Hospital_tv.setText("暂未完善");
+                    } else {
+                        Hospital_tv.setText(object.getString("hospital"));
+                    }
+
+                    if ("".equals(object.getString("desk"))) {
+                        skill_tv.setText("暂未完善");
+                    } else {
+                        skill_tv.setText(object.getString("desk"));
+                    }
+
+
+                    phone_tv.setText("");
+                    Glide.with(mContext)
+                            .load(Connector.lll + object.getString("pic"))
+                            .placeholder(R.drawable.index_head)
+                            .centerCrop()
+                            .into(header_iv);
+                }
+
+                break;
+
+            case SATAT:
+
+                if (jsonObject.getIntValue("code") == 1) {
+
+                    ShowToast("修改成功");
+                }
+
+                break;
+        }
+    }
 }

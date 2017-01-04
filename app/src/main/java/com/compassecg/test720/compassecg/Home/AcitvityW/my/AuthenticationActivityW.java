@@ -1,6 +1,7 @@
 package com.compassecg.test720.compassecg.Home.AcitvityW.my;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,14 +16,19 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
+import com.compassecg.test720.compassecg.APP;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.unitl.BarBaseActivity;
+import com.compassecg.test720.compassecg.unitl.Connector;
 import com.compassecg.test720.compassecg.unitl.LocalImageHelper;
+import com.loopj.android.http.RequestParams;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -41,9 +47,9 @@ public class AuthenticationActivityW extends BarBaseActivity {
     private String imageName;
     private File imageFile;
     private Intent intent;
-
+    private final int START = 101;
     private int indexpager = 0;
-    private ByteArrayInputStream is,is2;
+    private ByteArrayInputStream is, is2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +78,43 @@ public class AuthenticationActivityW extends BarBaseActivity {
                 break;
             case R.id.textbtn:
 
-                ShowToast("认证");
+                if ("".equals(is) && "".equals(is2)) {
+                    ShowToast("请完善从业资格证和工作证");
+                } else {
+                    showConflictDialog();
+                }
+
                 break;
         }
+    }
+
+    private void showConflictDialog() {
+        final android.app.AlertDialog dlgShowBack = new android.app.AlertDialog.Builder(this).create();
+        dlgShowBack.setTitle("提示！");
+        dlgShowBack.setMessage("是否确认保存？");
+        dlgShowBack.setButton(DialogInterface.BUTTON_POSITIVE, "确定", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                RequestParams params = new RequestParams();
+                params.put("uid", APP.uuid);
+                params.put("file", is, "tem.png", "image/png");
+                params.put("file1", is2, "tem.png", "image/png");
+                Post(Connector.attestation, params, START);
+
+                dialog.dismiss();
+            }
+        });
+        dlgShowBack.setButton(DialogInterface.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dlgShowBack.setCancelable(false);
+        dlgShowBack.show();
+        Button btnNegative = dlgShowBack.getButton(android.app.AlertDialog.BUTTON_NEGATIVE);
+        btnNegative.setTextColor(getResources().getColor(R.color.lv));
     }
 
     private void changeHeader() {
@@ -220,7 +260,7 @@ public class AuthenticationActivityW extends BarBaseActivity {
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
-                    switch (indexpager){
+                    switch (indexpager) {
                         case 1:
                             Glide.with(getApplicationContext())
                                     .load(uriTempFile)
@@ -241,14 +281,6 @@ public class AuthenticationActivityW extends BarBaseActivity {
 
                     }
 
-
-
-//                    RequestParams params = new RequestParams();
-//                    params.put("id", APP.uuid);
-//                    params.put("type", "1");
-//                    params.put("file", is, "tem.png", "image/png");
-//                    Post(Connector.modifys, params, KJKAF);
-
                 }
                 break;
         }
@@ -268,5 +300,20 @@ public class AuthenticationActivityW extends BarBaseActivity {
         ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());//把压缩后的数据baos存放到ByteArrayInputStream中
         //Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);//把ByteArrayInputStream数据生成图片
         return isBm;
+    }
+
+
+    @Override
+    public void Getsuccess(JSONObject jsonObject, int what) {
+        super.Getsuccess(jsonObject, what);
+        switch (what) {
+            case START:
+                if (jsonObject.getIntValue("code") == 1) {
+                    ShowToast("认证成功");
+                } else {
+                    ShowToast("认证失败");
+                }
+                break;
+        }
     }
 }

@@ -11,15 +11,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.compassecg.test720.compassecg.APP;
 import com.compassecg.test720.compassecg.LoginActivity.LoginActivity;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.tooclass.domain.friend;
 import com.compassecg.test720.compassecg.unitl.BarBaseActivity;
-import com.compassecg.test720.compassecg.unitl.Connector;
 import com.compassecg.test720.compassecg.unitl.UuidUtil;
 import com.easemob.chat.EMConversation;
-import com.loopj.android.http.RequestParams;
 import com.test720.auxiliary.Utils.DataCleanManager;
 
 import java.util.ArrayList;
@@ -78,10 +75,10 @@ TextView titit;
 //        getActivity().runOnUiThread(new Runnable() {
 //            @Override
 //            public void run() {
-        RequestParams params = new RequestParams();
-
-        params.put("phone", APP.username);
-        Post(Connector.friendList, params, SATARl);
+//        RequestParams params = new RequestParams();
+//
+//        params.put("phone", APP.username);
+//        Post(Connector.friendList, params, SATARl);
 //            }
 //        });
 

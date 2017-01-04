@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
 import com.compassecg.test720.compassecg.APP;
-import com.compassecg.test720.compassecg.BigImage.ImageViewpagerActivity;
 import com.compassecg.test720.compassecg.DemoHelper;
 import com.compassecg.test720.compassecg.MainActivity;
 import com.compassecg.test720.compassecg.R;
@@ -323,13 +322,13 @@ public class LoginActivity extends NoBarBaseActivity {
             }
 
             if (data != null) {
-                uid = data.get("openid");
-//                Toast.makeText(getApplicationContext(), data.toString(), Toast.LENGTH_SHORT).show();
-                RequestParams params = new RequestParams();
-                params.put("uuid", data.get("openid"));
-                params.put("type", typel);
-                L.e(params.toString());
-                Getl(Connector.bind, params, SATATKL);
+//                uid = data.get("openid");
+////                Toast.makeText(getApplicationContext(), data.toString(), Toast.LENGTH_SHORT).show();
+//                RequestParams params = new RequestParams();
+//                params.put("uuid", data.get("openid"));
+//                params.put("type", typel);
+//                L.e(params.toString());
+//                Getl(Connector.bind, params, SATATKL);
             }
         }
 
@@ -379,23 +378,21 @@ public class LoginActivity extends NoBarBaseActivity {
 
             case R.id.ok:
 
-startActivity(new Intent( this, ImageViewpagerActivity.class));
-                                     overridePendingTransition(R.anim.umeng_socialize_fade_in, R.anim.umeng_socialize_fade_out);
+
                 if (!isMobile(phone.getText().toString().replace(" ", ""))) {
                     Toast.makeText(this, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(pass.getText())) {
 
                     Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT).show();
                 } else {
-//                    getDatae();
-                    ActivityUtil.finishAllActivity();
-                    finish();
-                    // 进入主页面
-                    overridePendingTransition(R.anim.umeng_socialize_fade_in, R.anim.umeng_socialize_fade_out);
-                    startActivity(new Intent(mContext, MainActivity.class));
-                    overridePendingTransition(R.anim.umeng_socialize_fade_in, R.anim.umeng_socialize_fade_out);
+                    getDatae();
+//                    ActivityUtil.finishAllActivity();
+//                    finish();
+//                    // 进入主页面
+//                    overridePendingTransition(R.anim.umeng_socialize_fade_in, R.anim.umeng_socialize_fade_out);
+//                    startActivity(new Intent(mContext, MainActivity.class));
+//                    overridePendingTransition(R.anim.umeng_socialize_fade_in, R.anim.umeng_socialize_fade_out);
                 }
-//                overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_bottom);
 
                 break;
             case R.id.pass_lost:
@@ -412,7 +409,7 @@ startActivity(new Intent( this, ImageViewpagerActivity.class));
         RequestParams params = new RequestParams();
         params.put("username", getPhonetext);
         params.put("password", password);
-        Post(Connector.logins, params, SATAT);
+        Post(Connector.login, params, SATAT);
     }
 
     @Override
@@ -420,36 +417,42 @@ startActivity(new Intent( this, ImageViewpagerActivity.class));
 
         switch (what) {
             case 1:
-                int status = jsonObject.getIntValue("msg");
+                int status = jsonObject.getIntValue("code");
                 if (status == 1) {
                     Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
 
-                    JSONObject Uid = jsonObject.getJSONObject("uid");
+                    JSONObject Uid = jsonObject.getJSONObject("list");
+
+                    APP.header = Uid.getString("pic");
+                    APP.score = Uid.getString("score");
                     APP.uuid = Uid.getString("id");
-                    phonetext = phone.getText().toString();
-                    String username = phonetext.replaceAll("\\s", "");
-                    APP.username = username;
-                    APP.classificationid = Uid.getString("classificationid");
 
-                    L.e("uuid", "" + jsonObject.getString("id"));
-                    L.e("uuid", "" + APP.classificationid);
+//                    loginL(Uid.getString("username"));
+//                    phonetext = phone.getText().toString();
+//                    String username = phonetext.replaceAll("\\s", "");
+//                    APP.username = username;
+//                    APP.classificationid = Uid.getString("classificationid");
+//
+//                    L.e("uuid", "" + jsonObject.getString("id"));
+//                    L.e("uuid", "" + APP.classificationid);
+
                     UuidUtil.saveLoginInfo(mContext);
-                    login();
-//                    finish();
-//                    ActivityUtil.finishAllActivity();
-//                    // 进入主页面
-//                    overridePendingTransition(R.anim.umeng_socialize_fade_in, R.anim.umeng_socialize_fade_out);
-//                    startActivity(new Intent(mContext, MainActivity.class));
-//                    overridePendingTransition(R.anim.umeng_socialize_fade_in, R.anim.umeng_socialize_fade_out);
 
-//                    finish();
+
+                    ActivityUtil.finishAllActivity();
+                    // 进入主页面
+
+                    startActivity(new Intent(mContext, MainActivity.class));
+                    overridePendingTransition(R.anim.umeng_socialize_fade_in, R.anim.umeng_socialize_fade_out);
+                    finish();
                 } else {
-                    if (status == 0) {
-                        Toast.makeText(this, "未注册！", Toast.LENGTH_LONG).show();
-                    }
-                    if (status == 3) {
-                        Toast.makeText(this, "密码错误！", Toast.LENGTH_LONG).show();
-                    }
+                    Toast.makeText(this, "登录失败！", Toast.LENGTH_LONG).show();
+//                    if (status == 0) {
+//                        Toast.makeText(this, "未注册！", Toast.LENGTH_LONG).show();
+//                    }
+//                    if (status == 3) {
+//                        Toast.makeText(this, "密码错误！", Toast.LENGTH_LONG).show();
+//                    }
 
                 }
                 break;
@@ -523,7 +526,6 @@ startActivity(new Intent( this, ImageViewpagerActivity.class));
             Toast.makeText(this, R.string.network_isnot_available, Toast.LENGTH_SHORT).show();
             return;
         }
-
         currentPassword = "123";
 
         if (TextUtils.isEmpty(currentUsername)) {
@@ -573,12 +575,15 @@ startActivity(new Intent( this, ImageViewpagerActivity.class));
                 if (!LoginActivity.this.isFinishing() && pd.isShowing()) {
                     pd.dismiss();
                 }
-                // 进入主页面
-                Intent intent = new Intent(LoginActivity.this,
-                        MainActivity.class);
-                startActivity(intent);
-
+                UuidUtil.saveLoginInfo(mContext);
+//                login();
                 finish();
+                ActivityUtil.finishAllActivity();
+                // 进入主页面
+                overridePendingTransition(R.anim.umeng_socialize_fade_in, R.anim.umeng_socialize_fade_out);
+                startActivity(new Intent(mContext, MainActivity.class));
+                overridePendingTransition(R.anim.umeng_socialize_fade_in, R.anim.umeng_socialize_fade_out);
+
             }
 
             @Override

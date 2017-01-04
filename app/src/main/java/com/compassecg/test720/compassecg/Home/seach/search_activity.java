@@ -22,9 +22,7 @@ import com.compassecg.test720.compassecg.Home.adapter.Post_list_adapterW;
 import com.compassecg.test720.compassecg.Home.adapter.forum_list_adapterW;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.bean.UserList;
-import com.compassecg.test720.compassecg.unitl.Connector;
 import com.compassecg.test720.compassecg.unitl.UuidUtil;
-import com.loopj.android.http.RequestParams;
 import com.test720.auxiliary.Utils.NoBarBaseActivity;
 
 import java.util.ArrayList;
@@ -195,10 +193,10 @@ public class search_activity extends NoBarBaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 lists.clear();
-                RequestParams params = new RequestParams();
-                params.put("search_name", listsearch.get(position).getName());
-                params.put("search_type", listsearch.get(position).getId());
-                Post(Connector.indexSearch, params, SATAR);
+//                RequestParams params = new RequestParams();
+//                params.put("search_name", listsearch.get(position).getName());
+//                params.put("search_type", listsearch.get(position).getId());
+//                Post(Connector.indexSearch, params, SATAR);
                 editText.setText(listsearch.get(position).getName());
                 if (listsearch.get(position).getId().equals("1")) {
                     type = 1;
@@ -246,11 +244,11 @@ public class search_activity extends NoBarBaseActivity {
 
 
     public void fetchData() {
-        RequestParams params = new RequestParams();
-        params.put("search_name", title);
-        params.put("p", thispage);
-        params.put("search_type", type);
-        Get(Connector.indexSearch, params, SATAR);
+//        RequestParams params = new RequestParams();
+//        params.put("search_name", title);
+//        params.put("p", thispage);
+//        params.put("search_type", type);
+//        Get(Connector.indexSearch, params, SATAR);
     }
 
 
@@ -272,10 +270,10 @@ public class search_activity extends NoBarBaseActivity {
                         int k = -1;
                         if (!editText.getText().toString().equals("")) {
                             title = editText.getText().toString();
-                            RequestParams params = new RequestParams();
-                            params.put("search_name", editText.getText().toString());
-                            params.put("search_type", "1");
-                            Post(Connector.indexSearch, params, SATAR);
+//                            RequestParams params = new RequestParams();
+//                            params.put("search_name", editText.getText().toString());
+//                            params.put("search_type", "1");
+//                            Post(Connector.indexSearch, params, SATAR);
                             UserList userList = new UserList();
                             userList.setId("1");
                             userList.setName(editText.getText().toString());
@@ -310,10 +308,10 @@ public class search_activity extends NoBarBaseActivity {
                         int m = -1;
                         if (!editText.getText().toString().equals("")) {
                             title = editText.getText().toString();
-                            RequestParams params = new RequestParams();
-                            params.put("search_name", editText.getText().toString());
-                            params.put("search_type", "2");
-                            Post(Connector.indexSearch, params, SATAR);
+//                            RequestParams params = new RequestParams();
+//                            params.put("search_name", editText.getText().toString());
+//                            params.put("search_type", "2");
+//                            Post(Connector.indexSearch, params, SATAR);
                             UserList userList = new UserList();
                             userList.setId("2");
                             userList.setName(editText.getText().toString());

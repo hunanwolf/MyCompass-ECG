@@ -106,8 +106,7 @@
         <!-- 设置环信应用的AppKey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
-            android:value="tieshikeji#gardengaugeecg"
-            />
+            android:value="tieshikeji#gardengaugeecg" />
         <!-- 声明sdk所需的service -->
         <service android:name="com.easemob.chat.EMChatService" />
 
@@ -139,7 +138,7 @@
         //友盟
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="582d8cc4717c1904a1000b97" />
+            android:value="586c8f534ad1564609001c3a" />
 
         <activity
             android:name=".Home.AcitvityW.my.infoactivityW"
@@ -243,7 +242,7 @@
         <activity android:name=".Home.AcitvityW.message.systemnew"></activity>//公告
         <!--搜索 -->
         <activity android:name=".Home.seach.search_activity"></activity>
-
+        <activity android:name=".LoginActivity.cahnggeActivity"></activity>
     </application>
 
 </manifest>

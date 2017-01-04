@@ -1,14 +1,21 @@
 package com.compassecg.test720.compassecg.Home.AcitvityW.my;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
+import com.compassecg.test720.compassecg.APP;
 import com.compassecg.test720.compassecg.R;
+import com.compassecg.test720.compassecg.unitl.Connector;
+import com.loopj.android.http.RequestParams;
+import com.test720.auxiliary.Utils.L;
 import com.test720.auxiliary.Utils.NoBarBaseActivity;
 import com.test720.auxiliary.Utils.RegularUtil;
 import com.test720.auxiliary.Utils.T;
@@ -42,7 +49,7 @@ public class PassChangeActivityW extends NoBarBaseActivity {
         passNew = getView(R.id.pass_new);
         passNewCon = getView(R.id.pass_new_con);
         baotun = getView(R.id.baotun);
-        btntext=getView(R.id.btntext);
+        btntext = getView(R.id.btntext);
         baotun.setOnClickListener(this);
         back = getView(R.id.back);
         back.setOnClickListener(this);
@@ -56,8 +63,8 @@ public class PassChangeActivityW extends NoBarBaseActivity {
                 finish();
                 break;
             case R.id.baotun:
-//                getDatae();
-                ShowToast("保存");
+                getDatae();
+//                ShowToast("保存");
                 break;
         }
     }
@@ -91,12 +98,8 @@ public class PassChangeActivityW extends NoBarBaseActivity {
         }
         if (!skil.equals("") && !ski_new.equals("") && !skil_con.equals("")) {
             if (ski_new.equals(skil_con)) {
-//                RequestParams params = new RequestParams();
-//                params.put("uid", APP.uuid);
-//                params.put("pwd", skil);
-//                params.put("password", skil_con);
-//                Post(Connector.password, params, SATAT);
 
+                showConflictDialog();
             } else {
                 passNewCon.setError("请重新输入密码");
             }
@@ -105,10 +108,44 @@ public class PassChangeActivityW extends NoBarBaseActivity {
         }
     }
 
+    private void showConflictDialog() {
+
+        final AlertDialog dlgShowBack = new AlertDialog.Builder(this).create();
+        dlgShowBack.setTitle("提示！");
+        dlgShowBack.setMessage("是否确认保存？");
+        dlgShowBack.setButton(DialogInterface.BUTTON_POSITIVE, "确定", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String skil = pass.getText().toString();
+                String skil_con = passNewCon.getText().toString();
+                RequestParams params = new RequestParams();
+                params.put("uid", APP.uuid);
+                params.put("old_pwd", skil);
+                params.put("new_pwd", skil_con);
+                Post(Connector.PersoneditPwd, params, SATAT);
+                L.e("params", params.toString());
+                dialog.dismiss();
+
+            }
+        });
+        dlgShowBack.setButton(DialogInterface.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dlgShowBack.setCancelable(false);
+        dlgShowBack.show();
+        Button btnNegative = dlgShowBack.getButton(android.app.AlertDialog.BUTTON_NEGATIVE);
+        btnNegative.setTextColor(getResources().getColor(R.color.lv));
+
+    }
+
     @Override
     public void Getsuccess(JSONObject jsonObject, int what) {
         super.Getsuccess(jsonObject, what);
-        int msg = jsonObject.getIntValue("msg");
+        int msg = jsonObject.getIntValue("code");
         if (msg == 1) {
             T.showShort(this, "修改成功");
             finish();

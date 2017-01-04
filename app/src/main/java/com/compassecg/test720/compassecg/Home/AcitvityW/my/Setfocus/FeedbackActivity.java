@@ -9,10 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.alibaba.fastjson.JSONObject;
-import com.compassecg.test720.compassecg.APP;
 import com.compassecg.test720.compassecg.R;
-import com.compassecg.test720.compassecg.unitl.Connector;
-import com.loopj.android.http.RequestParams;
 import com.test720.auxiliary.Utils.NoBarBaseActivity;
 import com.test720.auxiliary.Utils.T;
 
@@ -44,11 +41,11 @@ public class FeedbackActivity extends NoBarBaseActivity {
         String detail1 = detail.getText().toString();
 
         if (!detail1.equals("")) {
-            RequestParams params = new RequestParams();
-            params.put("id", APP.uuid);
-
-            params.put("content", detail1);
-            Post(Connector.feedback, params, JKAFBA);
+//            RequestParams params = new RequestParams();
+//            params.put("id", APP.uuid);
+//
+//            params.put("content", detail1);
+//            Post(Connector.feedback, params, JKAFBA);
 
         }else
             T.showLong(this,""+"请完善信息！");

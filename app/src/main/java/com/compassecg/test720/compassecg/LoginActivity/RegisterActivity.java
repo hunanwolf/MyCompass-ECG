@@ -22,10 +22,13 @@ public class RegisterActivity extends BarBaseActivity {
     ImageView clear, clear1, clear2;
     Button ok;//下一步
 
+    public static RegisterActivity   test_a=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_activity);
+        test_a=this;
         setTitleString("注册");
         phone = getView(R.id.phone);
         pass = getView(R.id.pass);
@@ -136,22 +139,22 @@ public class RegisterActivity extends BarBaseActivity {
         if (!RegularUtil.isnumber(phone.getText().toString())) {
 
             phone.setError("请输入字母开头加数字组成的账号");
-            T.showShort(mContext,"请输入字母开头加数字组成的账号");
+            T.showShort(mContext, "请输入字母开头加数字组成的账号");
 
             return;
         }
-   //     pass.getText().length() == 0
+        //     pass.getText().length() == 0
         if (!RegularUtil.ispassworld(pass.getText().toString())) {
             pass.setError("请输入6至16位密码！");
-            T.showShort(mContext,"请输入6至16位密码");
+            T.showShort(mContext, "请输入6至16位密码");
             return;
         }
         if (!RegularUtil.ispassworld(newpass.getText().toString())) {
             newpass.setError("请确认6至16位密码！");
-            T.showShort(mContext,"请确认6至16位密码");
+            T.showShort(mContext, "请确认6至16位密码");
             return;
         }
-        startActivity(new Intent(this, BinDingActivity.class));
+        startActivity(new Intent(this, BinDingActivity.class).putExtra("phone", phone.getText().toString()).putExtra("pass", pass.getText().toString()));
 
     }
 }

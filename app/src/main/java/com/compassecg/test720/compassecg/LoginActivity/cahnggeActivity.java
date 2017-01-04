@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
+import com.compassecg.test720.compassecg.APP;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.unitl.BarBaseActivity;
 import com.compassecg.test720.compassecg.unitl.Connector;
@@ -18,7 +19,7 @@ import com.loopj.android.http.RequestParams;
 import com.test720.auxiliary.Utils.L;
 import com.test720.auxiliary.Utils.RegularUtil;
 
-public class BinDingActivity extends BarBaseActivity {
+public class cahnggeActivity extends BarBaseActivity {
 
     public static String TAG = "com.compassecg.test720.compassecg.LoginActivity.BinDingActivity";
     EditText phone;
@@ -34,8 +35,8 @@ public class BinDingActivity extends BarBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bin_ding);
-        setTitleString("绑定手机");
+        setContentView(R.layout.changgeactivity);
+        setTitleString("更改绑定手机");
         phone = getView(R.id.phone);
         pass = getView(R.id.pass);
         clear = getView(R.id.clear);
@@ -78,10 +79,10 @@ public class BinDingActivity extends BarBaseActivity {
             case R.id.clear1:
                 String phonel = phone.getText().toString();
                 L.e("phonel", phonel);
-                if (!RegularUtil.isPhone(phonel)) {
-                    phone.setError("请正确输入手机号");
-                    return;
-                }
+//                if (!RegularUtil.isPhone(phonel)) {
+//                    phone.setError("请正确输入手机号");
+//                    return;
+//                }
                 gainCode();
                 clear1.setText("已发送");
                 break;
@@ -126,19 +127,19 @@ public class BinDingActivity extends BarBaseActivity {
     public void gainCode() {
 
         RequestParams params = new RequestParams();
-        params.put("type", 1);
-        params.put("tel", phone.getText().toString());
+        params.put("type", 4);
+        params.put("tel",  getIntent().getExtras().getString("tel"));
         Postl(Connector.gainCode, params, SATAT);
     }
 
     public void zhuce() {
 
         RequestParams params = new RequestParams();
-        params.put("username", getIntent().getExtras().getString("phone"));
-        params.put("password", getIntent().getExtras().getString("pass"));
-        params.put("tel", phone.getText().toString());
+        params.put("uid", APP.uuid);
+        params.put("old_tel", getIntent().getExtras().getString("tel"));
+        params.put("new_tel", phone.getText().toString());
         params.put("rand", pass.getText().toString());
-        Post(Connector.zhuce, params, SATATl);
+        Post(Connector.editPhone, params, SATATl);
     }
 
     @Override
@@ -182,13 +183,14 @@ public class BinDingActivity extends BarBaseActivity {
                         return;
                     }
                     if (jsonObject.getIntValue("code") == 2) {
-                        ShowToast("该手机已注册");
-                        return;
-                    }
-                    if (jsonObject.getIntValue("code") == 3) {
                         ShowToast("验证码不正确");
                         return;
                     }
+                    if (jsonObject.getIntValue("code") == 3) {
+                        ShowToast("该手机已注册");
+                        return;
+                    }
+
                     break;
             }
         } catch (Exception e) {

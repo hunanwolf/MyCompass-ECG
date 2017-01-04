@@ -29,8 +29,8 @@ import java.util.List;
  */
 public class APP extends MultiDexApplication {
     public static String size = "";//公司规模
-    public static String nature = "";//公司性质
-    public static String industry = "";//行业
+    public static String score = "";//积分
+    public static String objectl = "";//个人信息
     public static String professional = "";//行业
     public static String Professionalid = "";//行业id
     public static String Record_formal = "";//学历
@@ -93,7 +93,7 @@ public class APP extends MultiDexApplication {
 
     public static String baiduCity = "";
     public static BDLocation location;
-//    public static List<phone> contactList = new ArrayList();//手机联系人
+    //    public static List<phone> contactList = new ArrayList();//手机联系人
 //    public static List<EaseUser> contactList1 = new ArrayList<>();//好友类表
     public static List<friend> friendList = new ArrayList<>();//好友类表
     //简历临时信息

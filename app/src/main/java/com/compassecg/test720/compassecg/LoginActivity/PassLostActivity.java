@@ -1,6 +1,7 @@
 package com.compassecg.test720.compassecg.LoginActivity;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -8,14 +9,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.unitl.BarBaseActivity;
+import com.compassecg.test720.compassecg.unitl.Connector;
+import com.loopj.android.http.RequestParams;
 import com.test720.auxiliary.Utils.L;
 import com.test720.auxiliary.Utils.RegularUtil;
 import com.test720.auxiliary.Utils.T;
 
 public class PassLostActivity extends BarBaseActivity {
-
+    public static String TAG = "com.compassecg.test720.compassecg.LoginActivity.PassLostActivity";
     EditText phone;
     EditText pass;
     EditText password;
@@ -25,6 +29,9 @@ public class PassLostActivity extends BarBaseActivity {
     TextView clear1;
     ImageView clear2;
     ImageView clear3;
+    private CountDownTimer timer;
+    private static final int SATAT = 1;//验证码
+    private static final int SATATl = 2;//重置
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +119,26 @@ public class PassLostActivity extends BarBaseActivity {
         });
     }
 
+    private void fetchCode() {
+
+        clear1.setTextColor(getResources().getColor(R.color.gray_normal));
+        clear1.setText("重新获取(60S)");
+        clear1.setClickable(false);
+        timer = new CountDownTimer(60000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                clear1.setText("重新获取(" + (int) (millisUntilFinished / 1000) + ")");
+            }
+
+            @Override
+            public void onFinish() {
+                clear1.setTextColor(getResources().getColor(R.color.lv));
+                clear1.setText("获取验证码");
+                clear1.setClickable(true);
+            }
+        }.start();
+    }
+
     @Override
     public void onClick(View v) {
         super.onClick(v);
@@ -143,7 +170,9 @@ public class PassLostActivity extends BarBaseActivity {
                 }
                 if (!password.getText().toString().equals(newpassword.getText().toString())) {
                     newpassword.setError("请确认密码");
+                    return;
                 }
+                editPwd();
                 break;
 
             case R.id.clear:
@@ -160,7 +189,7 @@ public class PassLostActivity extends BarBaseActivity {
                     return;
                 }
                 clear1.setText("已发送");
-
+                gainCode();
                 break;
 
             case R.id.clear2:
@@ -172,6 +201,68 @@ public class PassLostActivity extends BarBaseActivity {
                 newpassword.setText("");
                 clear3.setVisibility(View.GONE);
                 break;
+        }
+    }
+
+    //获取验证码
+    public void gainCode() {
+
+        RequestParams params = new RequestParams();
+        params.put("type", 2);
+        params.put("tel", phone.getText().toString());
+        Postl(Connector.gainCode, params, SATAT);
+    }
+
+    //重置密码
+    public void editPwd() {
+
+        RequestParams params = new RequestParams();
+        params.put("rand", pass.getText().toString());
+        params.put("new_pwd", password.getText().toString());
+        params.put("tel", phone.getText().toString());
+        Post(Connector.editPwd, params, SATATl);
+    }
+
+    @Override
+    public void Getsuccess(JSONObject jsonObject, int what) {
+        super.Getsuccess(jsonObject, what);
+
+        try {
+            switch (what) {
+                case SATAT:
+                    if (jsonObject.getIntValue("code") == 1) {
+                        ShowToast("发送成功");
+                        fetchCode();
+                        return;
+                    }
+                    if (jsonObject.getIntValue("code") == 0) {
+                        ShowToast("发送失败");
+                        return;
+                    }
+                    if (jsonObject.getIntValue("code") == 2) {
+                        ShowToast("该手机已注册");
+                        return;
+                    }
+                    if (jsonObject.getIntValue("code") == 3) {
+
+                        ShowToast("该手机未注册");
+                        return;
+                    }
+
+                    break;
+
+
+                case SATATl:
+                    if (jsonObject.getIntValue("code") == 1) {
+                        ShowToast("重置成功");
+                    } else {
+                        ShowToast("重置失败");
+                    }
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            L.e(TAG, "数据炸了!");
         }
     }
 }

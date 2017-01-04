@@ -5,7 +5,6 @@ import android.webkit.WebView;
 
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.unitl.BarBaseActivity;
-import com.compassecg.test720.compassecg.unitl.Connector;
 
 
 public class web extends BarBaseActivity {
@@ -20,7 +19,7 @@ public class web extends BarBaseActivity {
         setTitleString("新闻详情");
         url = getIntent().getExtras().getString("url");
         mWebView = getView(R.id.mWebView);
-        mWebView.loadUrl(Connector.carousel+"?id="+url);
+//        mWebView.loadUrl(Connector.carousel+"?id="+url);
     }
 
 

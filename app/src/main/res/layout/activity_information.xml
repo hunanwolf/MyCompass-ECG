@@ -189,7 +189,7 @@
                     <TextView
                         android:id="@+id/intro_tv"
                         style="@style/info_tv"
-                        android:hint="暂未完善"
+
                         android:paddingRight="16dp" />
 
                     <ImageView
