@@ -294,7 +294,9 @@ public class Learningfragment extends BaseFragment {
 
                 switch (position) {
                     case 0:
-                        startActivity(new Intent(getContext(), DoctorActivity.class));
+                        Intent intent=new Intent(getActivity(),DoctorActivity.class);
+                        intent.putExtra("type","医生");
+                        startActivity(intent);
                         break;
                     case 1:
 

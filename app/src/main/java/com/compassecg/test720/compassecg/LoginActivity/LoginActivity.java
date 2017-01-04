@@ -325,11 +325,11 @@ public class LoginActivity extends NoBarBaseActivity {
             if (data != null) {
                 uid = data.get("openid");
 //                Toast.makeText(getApplicationContext(), data.toString(), Toast.LENGTH_SHORT).show();
-                RequestParams params = new RequestParams();
+               /* RequestParams params = new RequestParams();
                 params.put("uuid", data.get("openid"));
                 params.put("type", typel);
                 L.e(params.toString());
-                Getl(Connector.bind, params, SATATKL);
+                Getl(Connector.bind, params, SATATKL);*/
             }
         }
 
@@ -409,10 +409,10 @@ startActivity(new Intent( this, ImageViewpagerActivity.class));
     public void getDatae() {
         getPhonetext = phone.getText().toString();
         password = pass.getText().toString();
-        RequestParams params = new RequestParams();
+       /* RequestParams params = new RequestParams();
         params.put("username", getPhonetext);
         params.put("password", password);
-        Post(Connector.logins, params, SATAT);
+        Post(Connector.logins, params, SATAT);*/
     }
 
     @Override

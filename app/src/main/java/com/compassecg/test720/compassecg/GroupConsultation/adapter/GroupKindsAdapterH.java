@@ -10,9 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.compassecg.test720.compassecg.GroupConsultation.activity.BrowsePicActivityH;
+import com.compassecg.test720.compassecg.Home.AcitvityW.my.markActivityW;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.View.NetworkImageAdapter;
 import com.compassecg.test720.compassecg.View.NineGridView;
+import com.compassecg.test720.compassecg.View.RoundImageView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -51,7 +53,7 @@ public class GroupKindsAdapterH extends BaseAdapter {
             holder=new ViewHolder();
             convertView=View.inflate(context,R.layout.item_for_group_kinds,null);
 
-            holder.imgIv = (ImageView) convertView.findViewById(R.id.iv1);
+            holder.imgIv = (RoundImageView) convertView.findViewById(R.id.iv1);
             holder.nameTv = (TextView) convertView.findViewById(R.id.tv1);
             holder.contentTv = (TextView) convertView.findViewById(R.id.tv2);
             holder.timeTv = (TextView) convertView.findViewById(R.id.tv3);
@@ -72,6 +74,13 @@ public class GroupKindsAdapterH extends BaseAdapter {
         NetworkImageAdapter adapter = new NetworkImageAdapter(context, list);
         holder.mNineGridView.setAdapter(adapter);
         holder.mNineGridView.setOnImageClickListener(new Nicgriadview(position));
+
+        holder.imgIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, markActivityW.class).putExtra("type", 666));
+            }
+        });
          return convertView;
 
     }
@@ -98,7 +107,7 @@ public class GroupKindsAdapterH extends BaseAdapter {
     class ViewHolder{
 
         public TextView nameTv,contentTv,timeTv,numTv;
-        public ImageView imgIv;
+        public RoundImageView imgIv;
         public NineGridView mNineGridView;
     }
 

@@ -145,6 +145,85 @@
                     android:layout_centerVertical="true"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/id8"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="5dp"
+                    android:text="论坛"
+                    android:textSize="16sp"
+                    android:textColor="@color/gwe"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/id9"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="5dp"
+                    android:text="ECG"
+                    android:textSize="16sp"
+                    android:textColor="@color/gwe"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/id10"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="5dp"
+                    android:text="DCG"
+                    android:textSize="16sp"
+                    android:textColor="@color/gwe"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/id11"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="5dp"
+                    android:text="ABPM"
+                    android:textSize="16sp"
+                    android:textColor="@color/gwe"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/id12"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="5dp"
+                    android:text="其他"
+                    android:textSize="16sp"
+                    android:textColor="@color/gwe"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
 
 
 

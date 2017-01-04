@@ -17,11 +17,13 @@ import android.widget.TextView;
 
 import com.compassecg.test720.compassecg.GroupConsultation.adapter.GroupKindsAnswerAdapterH;
 import com.compassecg.test720.compassecg.GroupConsultation.adapter.GroupKindsAnswerFinalAdapterH;
+import com.compassecg.test720.compassecg.Home.AcitvityW.my.markActivityW;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.View.KeyboardListenRelativeLayout;
 import com.compassecg.test720.compassecg.View.MyListView;
 import com.compassecg.test720.compassecg.View.NetworkImageAdapter;
 import com.compassecg.test720.compassecg.View.NineGridView;
+import com.compassecg.test720.compassecg.View.RoundImageView;
 import com.orhanobut.logger.Logger;
 import com.test720.auxiliary.Utils.NoBarBaseActivity;
 import com.test720.auxiliary.Utils.T;
@@ -47,6 +49,7 @@ public class AnswerDetailsActivityH extends NoBarBaseActivity {
     private TextView tv_delete;
     private RelativeLayout rl_top;
     private LinearLayout ll2;
+    private RoundImageView iv_pic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,7 @@ public class AnswerDetailsActivityH extends NoBarBaseActivity {
         rl_right.setOnClickListener(this);
         iv_more.setOnClickListener(this);
         tv_delete.setOnClickListener(this);
+        iv_pic.setOnClickListener(this);
         rl_top.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -160,6 +164,7 @@ public class AnswerDetailsActivityH extends NoBarBaseActivity {
         tv_delete=getView(R.id.tv_delete);
         rl_top=getView(R.id.rl_top);
         ll2=getView(R.id.ll2);
+        iv_pic=getView(R.id.iv_pic);
     }
     public class Nicgriadview implements NineGridView.OnImageClickListener {
 
@@ -204,6 +209,9 @@ public class AnswerDetailsActivityH extends NoBarBaseActivity {
                 Intent intent1=new Intent(AnswerDetailsActivityH.this,ReportActivityH.class);
                 startActivity(intent1);
                 tv_delete.setVisibility(View.GONE);
+                break;
+            case R.id.iv_pic:
+                startActivity(new Intent(AnswerDetailsActivityH.this, markActivityW.class).putExtra("type", 666));
                 break;
         }
     }

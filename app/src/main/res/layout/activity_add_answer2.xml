@@ -70,6 +70,7 @@
                     android:textSize="16sp"
                     android:layout_centerVertical="true"/>
                 <TextView
+                    android:id="@+id/tv_choose"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="选择 "
@@ -120,7 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:numColumns="4"
+                    android:numColumns="3"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:scrollbars="none"></com.test720.auxiliary.View.NoScrollGridView>

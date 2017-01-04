@@ -44,11 +44,11 @@ public class FeedbackActivity extends NoBarBaseActivity {
         String detail1 = detail.getText().toString();
 
         if (!detail1.equals("")) {
-            RequestParams params = new RequestParams();
+           /* RequestParams params = new RequestParams();
             params.put("id", APP.uuid);
 
             params.put("content", detail1);
-            Post(Connector.feedback, params, JKAFBA);
+            Post(Connector.feedback, params, JKAFBA);*/
 
         }else
             T.showLong(this,""+"请完善信息！");

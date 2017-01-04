@@ -12,10 +12,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.compassecg.test720.compassecg.GroupConsultation.adapter.GroupKindsAnswerAdapterH;
+import com.compassecg.test720.compassecg.Home.AcitvityW.my.markActivityW;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.View.MyListView;
 import com.compassecg.test720.compassecg.View.NetworkImageAdapter;
 import com.compassecg.test720.compassecg.View.NineGridView;
+import com.compassecg.test720.compassecg.View.RoundImageView;
 import com.test720.auxiliary.Utils.NoBarBaseActivity;
 import com.test720.auxiliary.Utils.T;
 
@@ -39,6 +41,7 @@ public class ConsultationDetailsActivityH extends NoBarBaseActivity {
     private LinearLayout ll1;
     private RelativeLayout rl1;
     private RelativeLayout rl_top;
+    private RoundImageView iv_pic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,7 @@ public class ConsultationDetailsActivityH extends NoBarBaseActivity {
         iv_back.setOnClickListener(this);
         iv_more.setOnClickListener(this);
         tv_delete.setOnClickListener(this);
+        iv_pic.setOnClickListener(this);
         ll1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -123,6 +127,7 @@ public class ConsultationDetailsActivityH extends NoBarBaseActivity {
         ll1=getView(R.id.ll1);
         rl1=getView(R.id.rl1);
         rl_top=getView(R.id.rl_top);
+        iv_pic=getView(R.id.iv_pic);
     }
     public class Nicgriadview implements NineGridView.OnImageClickListener {
 
@@ -181,6 +186,9 @@ public class ConsultationDetailsActivityH extends NoBarBaseActivity {
                     tv_delete.setVisibility(View.GONE);
                 }
 
+                break;
+            case R.id.iv_pic:
+                startActivity(new Intent(ConsultationDetailsActivityH.this, markActivityW.class).putExtra("type", 666));
                 break;
         }
     }

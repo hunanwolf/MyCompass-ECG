@@ -21,7 +21,7 @@ public class FansActivityW extends BarBaseActivity implements Fans_list_adapterW
         setTitleString("我的粉丝");
         list=getView(R.id.list);
         swip=getView(R.id.swip);
-        adapter=new Fans_list_adapterW(this,urls,this,this);
+        adapter=new Fans_list_adapterW(this,urls,this,this,2);
                 list.setAdapter(adapter);
     }
 

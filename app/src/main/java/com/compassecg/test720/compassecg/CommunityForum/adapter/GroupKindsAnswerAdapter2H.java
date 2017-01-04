@@ -9,9 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.compassecg.test720.compassecg.GroupConsultation.activity.BrowsePicActivityH;
+import com.compassecg.test720.compassecg.Home.AcitvityW.my.markActivityW;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.View.NetworkImageAdapter;
 import com.compassecg.test720.compassecg.View.NineGridView;
+import com.compassecg.test720.compassecg.View.RoundImageView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -50,7 +52,7 @@ public class GroupKindsAnswerAdapter2H extends BaseAdapter {
             holder=new ViewHolder();
             convertView=View.inflate(context,R.layout.item_for_group_kinds_answer2,null);
 
-            holder.imgIv = (ImageView) convertView.findViewById(R.id.iv1);
+            holder.imgIv = (RoundImageView) convertView.findViewById(R.id.iv1);
             holder.nameTv = (TextView) convertView.findViewById(R.id.tv1);
             holder.contentTv = (TextView) convertView.findViewById(R.id.tv2);
             holder.timeTv = (TextView) convertView.findViewById(R.id.tv5);
@@ -62,6 +64,13 @@ public class GroupKindsAnswerAdapter2H extends BaseAdapter {
         }else{
             holder=(ViewHolder)convertView.getTag();
         }
+
+        holder.imgIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, markActivityW.class).putExtra("type", 666));
+            }
+        });
         //GroupPicAdapter adapter = new GroupPicAdapter(context);
         list.clear();
         list.add("http://i.dimg.cc/8f/3c/9f/39/8e/48/0b/b4/ff/0d/a8/8a/62/22/f3/6a.jpg");
@@ -98,7 +107,8 @@ public class GroupKindsAnswerAdapter2H extends BaseAdapter {
     class ViewHolder{
 
         public TextView nameTv,contentTv,timeTv,numTv;
-        public ImageView imgIv,imgSong;
+        public RoundImageView imgIv;
+        public ImageView imgSong;
         public NineGridView mNineGridView;
     }
 
