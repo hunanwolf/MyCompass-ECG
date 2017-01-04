@@ -15,8 +15,7 @@ import com.compassecg.test720.compassecg.CommunityForum.activity.AddAnswer2Activ
 import com.compassecg.test720.compassecg.CommunityForum.adapter.MarkPagerAdapterH;
 import com.compassecg.test720.compassecg.CommunityForum.fragment.CommunityAllFragmentH;
 import com.compassecg.test720.compassecg.GroupConsultation.GroupConsultationFragmentH;
-import com.compassecg.test720.compassecg.GroupConsultation.activity.CreateGroupActivityH;
-import com.compassecg.test720.compassecg.GroupConsultation.activity.SerachActivityH;
+import com.compassecg.test720.compassecg.Home.seach.search_activity;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.View.CustomViewPager;
 import com.test720.auxiliary.Utils.BaseFragment;
@@ -40,6 +39,7 @@ public class CommunityForumFragmentH extends BaseFragment {
 
     private CustomViewPager pager;
     private MarkPagerAdapterH pagerAdapter;
+    public static final int LUNTANG = 1030;//论坛
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,8 +86,7 @@ public class CommunityForumFragmentH extends BaseFragment {
                 startActivity(intent3);
                 break;
             case R.id.iv_search:
-                Intent intent4=new Intent(getActivity(), SerachActivityH.class);
-                startActivity(intent4);
+                startActivity(new Intent(getActivity(),search_activity.class).putExtra("type",LUNTANG));
                 break;
         }
     }
@@ -97,10 +96,10 @@ public class CommunityForumFragmentH extends BaseFragment {
         tabs=getView(R.id.tabs);
         pager=getView(R.id.pager);
         pagerContent.add(new CommunityAllFragmentH());
-        pagerContent.add(new GroupConsultationFragmentH());
-        pagerContent.add(new GroupConsultationFragmentH());
-        pagerContent.add(new GroupConsultationFragmentH());
-        pagerContent.add(new GroupConsultationFragmentH());
+        pagerContent.add(new CommunityAllFragmentH());
+        pagerContent.add(new CommunityAllFragmentH());
+        pagerContent.add(new CommunityAllFragmentH());
+        pagerContent.add(new CommunityAllFragmentH());
 
 //        tabs.setTabMode(TabLayout.MODE_FIXED);
         //1.MODE_SCROLLABLE模式

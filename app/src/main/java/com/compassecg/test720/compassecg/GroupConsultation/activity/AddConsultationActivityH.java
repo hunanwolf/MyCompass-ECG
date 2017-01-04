@@ -106,9 +106,9 @@ public class AddConsultationActivityH extends NoBarBaseActivity {
     public void setgridview() {
         Resources r = mContext.getResources();
         Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
-                + r.getResourcePackageName(R.drawable.add) + "/"
-                + r.getResourceTypeName(R.drawable.add) + "/"
-                + r.getResourceEntryName(R.drawable.add));
+                + r.getResourcePackageName(R.mipmap.oone) + "/"
+                + r.getResourceTypeName(R.mipmap.oone) + "/"
+                + r.getResourceEntryName(R.mipmap.oone));
         fakeImage = LocalImageHelper.getInstance().getFake();
         fakeImage.setOriginalUri("fake");
         fakeImage.setThumbnailUri(uri.toString());

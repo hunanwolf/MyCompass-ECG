@@ -2,9 +2,12 @@ package com.compassecg.test720.compassecg.GroupConsultation.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -32,6 +35,10 @@ public class ConsultationDetailsActivityH extends NoBarBaseActivity {
     private ImageView iv_back;
     private ImageView iv_more;
     private TextView tv_delete;
+    private FrameLayout fl_root;
+    private LinearLayout ll1;
+    private RelativeLayout rl1;
+    private RelativeLayout rl_top;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +57,38 @@ public class ConsultationDetailsActivityH extends NoBarBaseActivity {
         iv_back.setOnClickListener(this);
         iv_more.setOnClickListener(this);
         tv_delete.setOnClickListener(this);
+        ll1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
+                return false;
+            }
+        });
+        rl_top.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
+                return false;
+            }
+        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent=new Intent(ConsultationDetailsActivityH.this,AnswerDetailsActivityH.class);
                 startActivity(intent);
+            }
+        });
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
+                return false;
             }
         });
     }
@@ -85,6 +119,10 @@ public class ConsultationDetailsActivityH extends NoBarBaseActivity {
         iv_back=getView(R.id.iv_back);
         iv_more=getView(R.id.iv_more);
         tv_delete=getView(R.id.tv_delete);
+        fl_root=getView(R.id.fl_root);
+        ll1=getView(R.id.ll1);
+        rl1=getView(R.id.rl1);
+        rl_top=getView(R.id.rl_top);
     }
     public class Nicgriadview implements NineGridView.OnImageClickListener {
 
@@ -118,6 +156,14 @@ public class ConsultationDetailsActivityH extends NoBarBaseActivity {
             case R.id.rl_add:
                 Intent intent=new Intent(ConsultationDetailsActivityH.this,AddAnswerActivityH.class);
                 startActivity(intent);
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
+                break;
+            case R.id.rl_collection:
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
                 break;
             case R.id.iv_back:
                 finish();
@@ -126,6 +172,7 @@ public class ConsultationDetailsActivityH extends NoBarBaseActivity {
                 T.showShort(ConsultationDetailsActivityH.this,"点击了删除");
                 Intent intent1=new Intent(ConsultationDetailsActivityH.this,ReportActivityH.class);
                 startActivity(intent1);
+                tv_delete.setVisibility(View.GONE);
                 break;
             case R.id.iv_more:
                 if(tv_delete.getVisibility()==View.GONE){

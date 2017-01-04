@@ -154,14 +154,12 @@ public class AddAnswerActivityH extends NoBarBaseActivity  {
                 switch (state) {
                     case KeyboardListenRelativeLayout.KEYBOARD_STATE_HIDE://软键盘隐藏
                         Log.i("WOLF","软键盘隐藏");
-                        Logger.d("软键盘隐藏");
                         //更改图标
                         iv_jianpan.setImageResource(R.mipmap.answer_btn_jianpan);
                         //controlKeyboardLayout(root);
                         break;
                     case KeyboardListenRelativeLayout.KEYBOARD_STATE_SHOW://软键盘显示
                         Log.i("WOLF","软键盘显示");
-                        Logger.d("软键盘显示");
                         //更改图标
                         iv_jianpan.setImageResource(R.mipmap.answer_btn_jianpan_pre);
                         break;
@@ -408,9 +406,9 @@ public class AddAnswerActivityH extends NoBarBaseActivity  {
         lv_gridview = getView(R.id.lv_gridview);
         Resources r = mContext.getResources();
         Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
-                + r.getResourcePackageName(R.mipmap.btn_tianjia) + "/"
-                + r.getResourceTypeName(R.mipmap.btn_tianjia) + "/"
-                + r.getResourceEntryName(R.mipmap.btn_tianjia));
+                + r.getResourcePackageName(R.mipmap.oone) + "/"
+                + r.getResourceTypeName(R.mipmap.oone) + "/"
+                + r.getResourceEntryName(R.mipmap.oone));
         fakeImage = LocalImageHelper.getInstance().getFake();
         fakeImage.setOriginalUri("fake");
         fakeImage.setThumbnailUri(uri.toString());

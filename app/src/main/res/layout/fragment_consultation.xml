@@ -35,7 +35,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/line"/>
+        android:background="@color/background"/>
     <com.compassecg.test720.compassecg.View.BottomScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -56,7 +56,7 @@
             <View
                 android:layout_width="70dp"
                 android:layout_height="1dp"
-                android:background="@color/line"
+                android:background="@color/background"
                 android:layout_alignLeft="@+id/tv1"
                 android:layout_marginRight="10dp"
                 android:layout_gravity="center_vertical"/>
@@ -71,7 +71,7 @@
             <View
                 android:layout_width="70dp"
                 android:layout_height="1dp"
-                android:background="@color/line"
+                android:background="@color/background"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical"/>
         </LinearLayout>
@@ -108,7 +108,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/line"/>
+        android:background="@color/background"/>
     <RelativeLayout
         android:id="@+id/rl_city"
         android:layout_width="match_parent"
@@ -156,7 +156,7 @@
         <View
             android:layout_width="70dp"
             android:layout_height="1dp"
-            android:background="@color/line"
+            android:background="@color/background"
             android:layout_marginRight="10dp"
             android:layout_gravity="center_vertical"/>
         <TextView
@@ -170,7 +170,7 @@
         <View
             android:layout_width="70dp"
             android:layout_height="1dp"
-            android:background="@color/line"
+            android:background="@color/background"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>

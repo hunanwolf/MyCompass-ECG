@@ -2,12 +2,15 @@ package com.compassecg.test720.compassecg.CommunityForum.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.compassecg.test720.compassecg.CommunityForum.adapter.GroupKindsAnswerAdapter2H;
 import com.compassecg.test720.compassecg.GroupConsultation.activity.AddAnswerActivityH;
 import com.compassecg.test720.compassecg.GroupConsultation.activity.AnswerDetailsActivityH;
 import com.compassecg.test720.compassecg.GroupConsultation.activity.BrowsePicActivityH;
@@ -36,6 +39,8 @@ public class PostDetailsActivityH extends NoBarBaseActivity {
     private ImageView iv_back;
     private ImageView iv_more;
     private TextView tv_delete;
+    private RelativeLayout rl_top;
+    private LinearLayout ll1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +77,7 @@ public class PostDetailsActivityH extends NoBarBaseActivity {
         mNineGridView.setAdapter(adapter);
         mNineGridView.setOnImageClickListener(new Nicgriadview());
 
-        GroupKindsAnswerAdapterH adapter_answer=new GroupKindsAnswerAdapterH(this);
+        GroupKindsAnswerAdapter2H adapter_answer=new GroupKindsAnswerAdapter2H(this);
         listView.setAdapter(adapter_answer);
         listView.setFocusable(false);
     }
@@ -85,6 +90,36 @@ public class PostDetailsActivityH extends NoBarBaseActivity {
         iv_back=getView(R.id.iv_back);
         iv_more=getView(R.id.iv_more);
         tv_delete=getView(R.id.tv_delete);
+        rl_top=getView(R.id.rl_top);
+        ll1=getView(R.id.ll1);
+
+        rl_top.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
+                return false;
+            }
+        });
+        ll1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
+                return false;
+            }
+        });
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
+                return false;
+            }
+        });
     }
     public class Nicgriadview implements NineGridView.OnImageClickListener {
 
@@ -107,7 +142,15 @@ public class PostDetailsActivityH extends NoBarBaseActivity {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.rl_collection:
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
+                break;
             case R.id.rl_add:
+                if(tv_delete.getVisibility()==View.VISIBLE){
+                    tv_delete.setVisibility(View.GONE);
+                }
                 Intent intent=new Intent(PostDetailsActivityH.this,AddAnswerActivityH.class);
                 startActivity(intent);
                 break;

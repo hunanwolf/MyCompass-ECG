@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/root"
+    android:background="@color/white"
     tools:context="com.compassecg.test720.compassecg.GroupConsultation.activity.ConsultationDetailsActivityH">
 
     <RelativeLayout
         android:id="@+id/rl_top"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:background="@color/white">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -108,6 +110,10 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:scrollbars="none"
+                    android:horizontalSpacing="3sp"
+                    android:verticalSpacing="3dp"
+                    android:padding="7dp"
+                    android:background="@color/white"
                     android:layout_height="wrap_content"></GridView>
             </RelativeLayout>
         </LinearLayout>
