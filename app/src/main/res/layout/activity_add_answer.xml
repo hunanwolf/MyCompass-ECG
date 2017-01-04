@@ -106,7 +106,7 @@
                     android:id="@+id/lv_gridview"
                     android:layout_width="match_parent"
                     android:layout_centerInParent="true"
-                    android:numColumns="4"
+                    android:numColumns="3"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:scrollbars="none"

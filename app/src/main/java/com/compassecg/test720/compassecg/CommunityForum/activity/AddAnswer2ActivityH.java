@@ -30,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
@@ -74,6 +75,8 @@ public class AddAnswer2ActivityH extends NoBarBaseActivity {
     private ImageView iv_lvyin;
     private ImageView iv_pic;
     private RelativeLayout rl_choose_group;
+    private TextView tv_choose;
+    private int type=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +132,7 @@ public class AddAnswer2ActivityH extends NoBarBaseActivity {
         iv_lvyin=getView(R.id.iv_lvyin);
         iv_pic=getView(R.id.iv_pic);
         rl_choose_group=getView(R.id.rl_choose_group);
+        tv_choose=getView(R.id.tv_choose);
     }
 
     @Override
@@ -362,29 +366,42 @@ public class AddAnswer2ActivityH extends NoBarBaseActivity {
         WindowManager.LayoutParams lParams = window.getAttributes();
         lParams.width = (int) (display.getWidth());
         window.setAttributes(lParams);
-        /*v.findViewById(R.id.take_).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, ChoosePicFolderActivity.class);
-                intent.putExtra("MaxNumber", MaxNumaber);
-                startActivityForResult(intent, REQUEST_CODE_GETIMAGE_BYCROP);
-                //当界面摧毁后, 该发布界面的图片都清空, 防止下一个同类界面的选图重用
-                picDialog.cancel();
-            }
-        });
-        v.findViewById(R.id.upload_from_local).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                takePics();
-//当界面摧毁后, 该发布界面的图片都清空, 防止下一个同类界面的选图重用
 
-                picDialog.dismiss();
-
-            }
-        });*/
         v.findViewById(R.id.pic_cancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                picDialog.dismiss();
+            }
+        });
+        v.findViewById(R.id.rl_ecg).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                type=1;
+                tv_choose.setText("ECG");
+                picDialog.dismiss();
+            }
+        });
+        v.findViewById(R.id.rl_dcg).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                type=2;
+                tv_choose.setText("DCG");
+                picDialog.dismiss();
+            }
+        });
+        v.findViewById(R.id.rl_ecg).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                type=3;
+                tv_choose.setText("ABPM");
+                picDialog.dismiss();
+            }
+        });
+        v.findViewById(R.id.rl_ecg).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                type=4;
+                tv_choose.setText("其他");
                 picDialog.dismiss();
             }
         });

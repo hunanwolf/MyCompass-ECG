@@ -50,7 +50,8 @@
           android:layout_marginRight="20dp"
           android:layout_marginTop="10dp"
           android:layout_below="@+id/tv5"
-          ngv:gap="2dp">
+          ngv:gap="2dp"
+          android:visibility="gone">
       </com.compassecg.test720.compassecg.View.NineGridView>
         <TextView
             android:id="@+id/tv3"
@@ -67,10 +68,10 @@
             android:layout_width="13dp"
             android:layout_height="13dp"
             android:src="@mipmap/btn_pinglun"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="27dp"
+            android:layout_marginRight="3dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="5dp"
+            android:layout_toLeftOf="@+id/tv4"
             android:layout_below="@+id/mNineGridView"/>
         <TextView
             android:id="@+id/tv4"

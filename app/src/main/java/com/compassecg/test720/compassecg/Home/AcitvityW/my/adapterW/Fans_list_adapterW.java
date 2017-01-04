@@ -16,6 +16,7 @@ import com.compassecg.test720.compassecg.R;
  */
 
 public class Fans_list_adapterW extends BaseAdapter {
+    private final int type;
     private Context mContext;
     private Activity activity;
     String[] urls;
@@ -27,11 +28,12 @@ public class Fans_list_adapterW extends BaseAdapter {
         public void follclick(View v);
     }
 
-    public Fans_list_adapterW(Context mContext, String[] urls, Activity activity,Callback callback) {
+    public Fans_list_adapterW(Context mContext, String[] urls, Activity activity,Callback callback,int type) {
         this.mContext = mContext;
         this.urls = urls;
         this.activity = activity;
         this.mCallback = callback;
+        this.type = type;
     }
 
     @Override
@@ -65,21 +67,45 @@ public class Fans_list_adapterW extends BaseAdapter {
         } else {
             indicator = (Indicator) convertView.getTag();
         }
-        indicator.Invitation.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.drawoblelv));
-        indicator.follow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCallback.follclick(v);
-                indicator.follow.setText("已关注");
-            }
-        });
-        indicator.Invitation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCallback.Invitationclick(v);
-                indicator.Invitation.setText("已邀请");
-            }
-        });
+        //成员列表
+        if(type==1){
+            indicator.Invitation.setText("踢出");
+            indicator.Invitation.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.drawoblelv));
+            indicator.follow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mCallback.follclick(v);
+                    indicator.follow.setText("已关注");
+                }
+            });
+            indicator.Invitation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mCallback.Invitationclick(v);
+                    //indicator.Invitation.setText("已邀请");
+
+                }
+            });
+        }
+        //医生列表
+        if(type==2){
+            indicator.Invitation.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.drawoblelv));
+            indicator.follow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mCallback.follclick(v);
+                    indicator.follow.setText("已关注");
+                }
+            });
+            indicator.Invitation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mCallback.Invitationclick(v);
+                    indicator.Invitation.setText("已邀请");
+                }
+            });
+        }
+
         return convertView;
     }
 

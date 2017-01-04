@@ -75,10 +75,17 @@ TextView titit;
 //        getActivity().runOnUiThread(new Runnable() {
 //            @Override
 //            public void run() {
+<<<<<<< HEAD
 //        RequestParams params = new RequestParams();
 //
 //        params.put("phone", APP.username);
 //        Post(Connector.friendList, params, SATARl);
+=======
+       /* RequestParams params = new RequestParams();
+
+        params.put("phone", APP.username);
+        Post(Connector.friendList, params, SATARl);*/
+>>>>>>> eebebd29a5d592ad615caccd08b547ce1eed0454
 //            }
 //        });
 

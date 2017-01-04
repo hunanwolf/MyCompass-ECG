@@ -66,6 +66,7 @@
         android:layout_height="50dp"
         android:background="@color/white">
         <com.compassecg.test720.compassecg.View.RoundImageView
+            android:id="@+id/iv_pic"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@mipmap/shenqu_pic1"

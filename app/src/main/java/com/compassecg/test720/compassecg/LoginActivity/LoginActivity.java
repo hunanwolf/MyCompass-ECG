@@ -322,6 +322,7 @@ public class LoginActivity extends NoBarBaseActivity {
             }
 
             if (data != null) {
+<<<<<<< HEAD
 //                uid = data.get("openid");
 ////                Toast.makeText(getApplicationContext(), data.toString(), Toast.LENGTH_SHORT).show();
 //                RequestParams params = new RequestParams();
@@ -329,6 +330,15 @@ public class LoginActivity extends NoBarBaseActivity {
 //                params.put("type", typel);
 //                L.e(params.toString());
 //                Getl(Connector.bind, params, SATATKL);
+=======
+                uid = data.get("openid");
+//                Toast.makeText(getApplicationContext(), data.toString(), Toast.LENGTH_SHORT).show();
+               /* RequestParams params = new RequestParams();
+                params.put("uuid", data.get("openid"));
+                params.put("type", typel);
+                L.e(params.toString());
+                Getl(Connector.bind, params, SATATKL);*/
+>>>>>>> eebebd29a5d592ad615caccd08b547ce1eed0454
             }
         }
 
@@ -406,10 +416,14 @@ public class LoginActivity extends NoBarBaseActivity {
     public void getDatae() {
         getPhonetext = phone.getText().toString();
         password = pass.getText().toString();
-        RequestParams params = new RequestParams();
+       /* RequestParams params = new RequestParams();
         params.put("username", getPhonetext);
         params.put("password", password);
+<<<<<<< HEAD
         Post(Connector.login, params, SATAT);
+=======
+        Post(Connector.logins, params, SATAT);*/
+>>>>>>> eebebd29a5d592ad615caccd08b547ce1eed0454
     }
 
     @Override

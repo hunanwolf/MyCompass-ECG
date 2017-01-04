@@ -5,7 +5,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <com.compassecg.test720.compassecg.View.SquareLayout
         android:layout_width="100dp"
         android:layout_gravity="center"
         android:layout_height="100dp">
@@ -23,12 +23,11 @@
             android:layout_width="17dp"
             android:layout_height="17dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="3dp"
             android:background="@mipmap/rectangle_delete"
             android:button="@null"
             android:checked="false"
             android:focusable="false" />
-    </RelativeLayout>
+    </com.compassecg.test720.compassecg.View.SquareLayout>
 
 
 

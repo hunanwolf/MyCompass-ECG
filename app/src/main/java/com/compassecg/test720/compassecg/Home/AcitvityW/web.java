@@ -19,7 +19,11 @@ public class web extends BarBaseActivity {
         setTitleString("新闻详情");
         url = getIntent().getExtras().getString("url");
         mWebView = getView(R.id.mWebView);
+<<<<<<< HEAD
 //        mWebView.loadUrl(Connector.carousel+"?id="+url);
+=======
+        //mWebView.loadUrl(Connector.carousel+"?id="+url);
+>>>>>>> eebebd29a5d592ad615caccd08b547ce1eed0454
     }
 
 

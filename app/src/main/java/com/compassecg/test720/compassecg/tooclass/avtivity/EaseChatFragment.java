@@ -216,9 +216,15 @@ public class EaseChatFragment extends EaseBaseFragment implements EMEventListene
 
     public void getDatael() {
 
+<<<<<<< HEAD
 //        RequestParams params = new RequestParams();
 //        params.put("phone", APP.username);
 //        Post(Connector.friendList, params, SATARl);
+=======
+       /* RequestParams params = new RequestParams();
+        params.put("phone", APP.username);
+        Post(Connector.friendList, params, SATARl);*/
+>>>>>>> eebebd29a5d592ad615caccd08b547ce1eed0454
 
 
     }
@@ -231,19 +237,34 @@ public class EaseChatFragment extends EaseBaseFragment implements EMEventListene
 
         list2.add(toChatUsername);
         L.e("list2", list2.toString());
+<<<<<<< HEAD
 //        RequestParams params = new RequestParams();
 //        params.put("id", APP.uuid);
 //        params.put("mobile_json", JSONArray.toJSONString(list2));
 //        Post(Connector.returnNickname, params, ALGNJOA);
+=======
+       /* RequestParams params = new RequestParams();
+        params.put("id", APP.uuid);
+        params.put("mobile_json", JSONArray.toJSONString(list2));
+        Post(Connector.returnNickname, params, ALGNJOA);*/
+>>>>>>> eebebd29a5d592ad615caccd08b547ce1eed0454
 
     }
 
     public void getdatae() {
+<<<<<<< HEAD
 //        RequestParams params = new RequestParams();
 //        params.put("id", id);
 //        L.e("type", type + "id" + id);
 //        params.put("type", type);
 //        Post(Connector.getInfo, params, SATAR);
+=======
+        /*RequestParams params = new RequestParams();
+        params.put("id", id);
+        L.e("type", type + "id" + id);
+        params.put("type", type);
+        Post(Connector.getInfo, params, SATAR);*/
+>>>>>>> eebebd29a5d592ad615caccd08b547ce1eed0454
     }
 
     /**

@@ -9,6 +9,7 @@ public class Connector {
     public static String hedaer = "http://120.26.141.238/syqapp/index.php/home/index/getHeaderImg/user_account/";
     public static String lll = "http://192.168.1.178/ygxd";
     //接口网址
+<<<<<<< HEAD
 //    public static String staticUrl = "http://120.26.141.238/ygxd/ygxd.php/";//服务器地址
     public static String staticUrl = "http://192.168.1.178/ygxd/ygxd.php/";//内网地址
     public static String Link = staticUrl + "Link/";
@@ -32,6 +33,20 @@ public class Connector {
 
     public static String homeInfo = Personage + "homeInfo";//个人主页简介
     public static String group = Personage + "group";//他的组
+=======
+    public static String staticUrl = "http://192.168.1.178/ygxd/ygxd.php/";
+
+    //论坛
+    public static String Forum = staticUrl + "Forum/";
+    public static String index = Forum + "index";  //论坛搜索
+    public static String problemDetails = Forum + "problemDetails";  //帖子(论坛)详情
+    public static String answerDetails = Forum + "answerDetails";  //回答详情
+    public static String report = Forum + "report";  //举报—论坛&会诊
+    public static String addProblem = Forum + "addProblem";  //添加问题
+    public static String addAnswer = Forum + "addAnswer";  //添加回答(论坛、会诊)
+    public static String delProblem = Forum + "delProblem";  //删除问题—论坛&会诊
+    public static String delAnswer = Forum + "delAnswer";  //删除回答—论坛&会诊
+>>>>>>> eebebd29a5d592ad615caccd08b547ce1eed0454
 
 
 }

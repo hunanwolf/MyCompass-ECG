@@ -16,10 +16,12 @@ import com.compassecg.test720.compassecg.GroupConsultation.activity.AnswerDetail
 import com.compassecg.test720.compassecg.GroupConsultation.activity.BrowsePicActivityH;
 import com.compassecg.test720.compassecg.GroupConsultation.activity.ReportActivityH;
 import com.compassecg.test720.compassecg.GroupConsultation.adapter.GroupKindsAnswerAdapterH;
+import com.compassecg.test720.compassecg.Home.AcitvityW.my.markActivityW;
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.View.MyListView;
 import com.compassecg.test720.compassecg.View.NetworkImageAdapter;
 import com.compassecg.test720.compassecg.View.NineGridView;
+import com.compassecg.test720.compassecg.View.RoundImageView;
 import com.test720.auxiliary.Utils.NoBarBaseActivity;
 import com.test720.auxiliary.Utils.T;
 
@@ -41,6 +43,7 @@ public class PostDetailsActivityH extends NoBarBaseActivity {
     private TextView tv_delete;
     private RelativeLayout rl_top;
     private LinearLayout ll1;
+    private RoundImageView iv1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,7 @@ public class PostDetailsActivityH extends NoBarBaseActivity {
         iv_back.setOnClickListener(this);
         iv_more.setOnClickListener(this);
         tv_delete.setOnClickListener(this);
+        iv1.setOnClickListener(this);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -92,6 +96,7 @@ public class PostDetailsActivityH extends NoBarBaseActivity {
         tv_delete=getView(R.id.tv_delete);
         rl_top=getView(R.id.rl_top);
         ll1=getView(R.id.ll1);
+        iv1=getView(R.id.iv1);
 
         rl_top.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -168,6 +173,10 @@ public class PostDetailsActivityH extends NoBarBaseActivity {
                 }else {
                     tv_delete.setVisibility(View.GONE);
                 }
+
+                break;
+            case R.id.iv1:
+                startActivity(new Intent(PostDetailsActivityH.this, markActivityW.class).putExtra("type", 666));
 
                 break;
         }
