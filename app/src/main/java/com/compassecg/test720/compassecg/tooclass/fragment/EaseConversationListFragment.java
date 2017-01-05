@@ -273,17 +273,10 @@ public class EaseConversationListFragment extends EaseBaseFragment implements On
                 for (int i = 0; i < conversationList.size(); i++) {
                     list2.add(conversationList.get(i).getUserName());
                 }
-<<<<<<< HEAD
 //                RequestParams params = new RequestParams();
 //                params.put("id", APP.uuid);
 //                params.put("mobile_json", JSONArray.toJSONString(list2));
 //                Post(Connector.returnNickname, params, SATAR);
-=======
-               /* RequestParams params = new RequestParams();
-                params.put("id", APP.uuid);
-                params.put("mobile_json", JSONArray.toJSONString(list2));
-                Post(Connector.returnNickname, params, SATAR);*/
->>>>>>> eebebd29a5d592ad615caccd08b547ce1eed0454
 
                 L.e("log", "进来没");
 //            }
@@ -313,17 +306,11 @@ public class EaseConversationListFragment extends EaseBaseFragment implements On
                 for (int i = 0; i < conversationList.size(); i++) {
                     list2.add(conversationList.get(i).getUserName());
                 }
-<<<<<<< HEAD
+
 //                RequestParams params = new RequestParams();
 //                params.put("id", APP.uuid);
 //                params.put("mobile_json", JSONArray.toJSONString(list2));
 //                Post(Connector.returnNickname, params, SATAR);
-=======
-               /* RequestParams params = new RequestParams();
-                params.put("id", APP.uuid);
-                params.put("mobile_json", JSONArray.toJSONString(list2));
-                Post(Connector.returnNickname, params, SATAR);*/
->>>>>>> eebebd29a5d592ad615caccd08b547ce1eed0454
 
                 L.e("log", "进来没");
             }
