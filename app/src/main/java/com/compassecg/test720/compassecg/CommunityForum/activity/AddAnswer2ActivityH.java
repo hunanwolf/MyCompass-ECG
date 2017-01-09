@@ -33,13 +33,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
+
 import com.compassecg.test720.compassecg.R;
 import com.compassecg.test720.compassecg.UploadPicture.ChoosePicFolderActivity;
 import com.compassecg.test720.compassecg.View.KeyboardListenRelativeLayout;
 import com.compassecg.test720.compassecg.unitl.LocalImageHelper;
-import com.orhanobut.logger.Logger;
 import com.test720.auxiliary.Utils.NoBarBaseActivity;
 import com.test720.auxiliary.Utils.T;
 
@@ -48,8 +49,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.xutils.x.view;
+
 public class AddAnswer2ActivityH extends NoBarBaseActivity {
 
+    private static final int DATA1 = 1;
     private RelativeLayout rl_text;
     private RelativeLayout rl_song;
     private RelativeLayout rl_pic;
@@ -69,19 +73,22 @@ public class AddAnswer2ActivityH extends NoBarBaseActivity {
     public static final int REQUEST_CODE_GETIMAGE_BYCROP = 2;
     private LinearLayout ll_bottom;
     private KeyboardListenRelativeLayout root;
-    private EditText et_content;
     private ImageView iv_back;
     private ImageView iv_jianpan;
     private ImageView iv_lvyin;
     private ImageView iv_pic;
     private RelativeLayout rl_choose_group;
     private TextView tv_choose;
+    private TextView textView11;
+    private EditText rl_choose_group2;
+    private EditText et_content;
     private int type=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_answer2);
+        view().inject(this);
         initView();
         setAdapter();
         setListenner();
@@ -98,6 +105,7 @@ public class AddAnswer2ActivityH extends NoBarBaseActivity {
         rl_pic.setOnClickListener(this);
         iv_back.setOnClickListener(this);
         rl_choose_group.setOnClickListener(this);
+        textView11.setOnClickListener(this);
         root.setOnKeyboardStateChangedListener(new KeyboardListenRelativeLayout.IOnKeyboardStateChangedListener() {
             @Override
             public void onKeyboardStateChanged(int state) {
@@ -133,6 +141,9 @@ public class AddAnswer2ActivityH extends NoBarBaseActivity {
         iv_pic=getView(R.id.iv_pic);
         rl_choose_group=getView(R.id.rl_choose_group);
         tv_choose=getView(R.id.tv_choose);
+        textView11=getView(R.id.textView11);
+        rl_choose_group2=getView(R.id.rl_choose_group2);
+        et_content=getView(R.id.et_content);
     }
 
     @Override
@@ -153,8 +164,44 @@ public class AddAnswer2ActivityH extends NoBarBaseActivity {
             case R.id.rl_choose_group:
                 showGroupDialog();
                 break;
+            case R.id.textView11:
+                //发布
+                if(type==0){
+                    T.showLong(AddAnswer2ActivityH.this,"请选择模块");
+                    break;
+                }
+                if("".equals(rl_choose_group2.getText().toString())){
+                    rl_choose_group2.setError("请填写标题");
+                    rl_choose_group2.requestFocus();
+                    break;
+            }
+                if("".equals(et_content.getText().toString())){
+                    et_content.setError("请填写正文");
+                    et_content.requestFocus();
+                    break;
+            }
+                getdata();
+                break;
         }
     }
+
+    private void getdata() {
+        /*RequestParams params = new RequestParams();
+        UuidUtil.getLoginInfo(this);
+        params.put("uid", APP.uuid);
+        params.put("module", type);//模块类型
+        params.put("title", rl_choose_group2.getText().toString());
+        params.put("content", et_content.getText().toString());
+        File[] file=new File[];
+        try {
+            params.put("pic",file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Post(Connector.addProblem, params, DATA1);*/
+
+    }
+
 
     /**
      * 关闭键盘
@@ -185,9 +232,9 @@ public class AddAnswer2ActivityH extends NoBarBaseActivity {
         lv_gridview = getView(R.id.lv_gridview);
         Resources r = mContext.getResources();
         Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
-                + r.getResourcePackageName(R.drawable.add) + "/"
-                + r.getResourceTypeName(R.drawable.add) + "/"
-                + r.getResourceEntryName(R.drawable.add));
+                + r.getResourcePackageName(R.mipmap.oone) + "/"
+                + r.getResourceTypeName(R.mipmap.oone) + "/"
+                + r.getResourceEntryName(R.mipmap.oone));
         fakeImage = LocalImageHelper.getInstance().getFake();
         fakeImage.setOriginalUri("fake");
         fakeImage.setThumbnailUri(uri.toString());
@@ -389,7 +436,7 @@ public class AddAnswer2ActivityH extends NoBarBaseActivity {
                 picDialog.dismiss();
             }
         });
-        v.findViewById(R.id.rl_ecg).setOnClickListener(new View.OnClickListener() {
+        v.findViewById(R.id.rl_abpm).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 type=3;
@@ -397,7 +444,7 @@ public class AddAnswer2ActivityH extends NoBarBaseActivity {
                 picDialog.dismiss();
             }
         });
-        v.findViewById(R.id.rl_ecg).setOnClickListener(new View.OnClickListener() {
+        v.findViewById(R.id.rl_qita).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 type=4;

@@ -56,4 +56,6 @@ dependencies {
     compile 'com.commit451:PhotoView:1.2.4'
     //个性化Log
     compile 'com.orhanobut:logger:1.15'
+    //xUtils包含了很多实用的android工具； xUtils支持超大文件(超过2G)上传，更全面的http请求协议支持
+    compile 'org.xutils:xutils:3.3.36'
 }

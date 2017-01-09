@@ -10,7 +10,7 @@ public class Connector {
     public static String lll = "http://192.168.1.178/ygxd";
     //接口网址
 //    public static String staticUrl = "http://120.26.141.238/ygxd/ygxd.php/";//服务器地址
-    public static String staticUrl = "http://192.168.1.178/ygxd/ygxd.php/";//内网地址
+    public static String staticUrl = "http://192.168.1.177/ygxd/ygxd.php/";//内网地址
     public static String Link = staticUrl + "Link/";
 //    public static String check_index=staticUrl+"check/"
 

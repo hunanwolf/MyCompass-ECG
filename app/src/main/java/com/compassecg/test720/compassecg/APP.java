@@ -20,6 +20,8 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.test720.auxiliary.Utils.CrashHandler;
 import com.umeng.socialize.PlatformConfig;
 
+import org.xutils.x;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -147,6 +149,7 @@ public class APP extends MultiDexApplication {
 
         initCrash();
         LocalImageHelper.init(this.getApplicationContext());
+        x.Ext.init(this);//Xutils初始化
     }
 
     private void initCrash() {
